@@ -1,0 +1,15 @@
+{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [63,43030355040127, 10,400753617286682]
+  },
+  "properties": {
+    "author": "Jørgen Brekke",
+    "literarypiece": "Doktor Fredrikis kabinett",
+    "year": "2014",
+    "lat":"63,43030355040127",
+    "long":"10,400753617286682",
+    "text":"Bayer lot Ingrid gli ut av armene og ned på sengen. Så bøyde han seg og dro frem kisten fra under sengen og fant pistolen sin. Han ladet den med ferskt krutt. Så stormet han ned trappen. Da han løp forbi kontoret, registrerte han at Torp hadde samlet mennene fra gaten der inne. All fornuft tilsa at han burde ta med seg disse mennene i jakten, men fornuft – fornuft var ikke på noen måte en del av ham lenger. Tankene hans var som stumme skygger. Gud ville ha gått seg vill i Nils Bayers raseri, men én ting var Bayer forvisset om: Gud fantes ikke. Han kom ned til Kongens gate. Han reagerte med frykt på å gå her blant alle disse menneskene, ville gitt alt han hadde, for ensomhet, men likevel gikk han mot torget der kirkegjengerne var flest. "
+  }
+}
