@@ -4,19 +4,31 @@ Meteor.startup(function() {
   });
 });
 
-var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=63.416330,10.359090&key=AIzaSyAjfbNiL1a-svDAxgvQ8ARka1M3rf8VB6g";
+var getUrl = function(lon, lat){
+  return `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lon},${lat}&key=${Meteor.settings.public.googleapis}`;
+}
+
+var xhr = new XMLHttpRequest();
+var map = {};
 
 Tracker.autorun(function () {
   if (Mapbox.loaded()) {
-    L.mapbox.accessToken = Meteor.settings.public.accessToken;
-    var map = L.mapbox.map("map", Meteor.settings.public.mapId);
-    
+    mapboxgl.accessToken = Meteor.settings.public.accessToken;
+    map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/siriholtnaes/cijj81zhp0078bolxxddj29nq',
+      center: [10.395151,63.427502], // starting position
+      zoom: 13
+    });
 
-    $.get(url, function(res){
-        console.log(res.results[0].formatted_address);
+    map.on('mousemove', function (e) {
+      document.getElementById('debugpanel').innerHTML =
+      JSON.stringify(e.point) + '<br />' +
+      JSON.stringify(e.lngLat);
     });
   }
 });
+
 
 Map = React.createClass({
   getInitialState() {
@@ -35,15 +47,23 @@ Map = React.createClass({
     })
   },
 
+  handleClick: function(){
+    map.on('click', function(e){
+      console.log(e.lngLat);
+      this.showModal(true);
+    })
+  },
+
   render() {
-    return (
+    return(
       <div>
+        <pre id='debugpanel'></pre>
         <Sidenav showModal={this.showModal}/>
         <div className="content-wrapper">
           <Modal
             showModal={this.state.showModal}
             hideModal={this.hideModal}/>
-          <div id="map" className="mapbox"></div>
+          <div onClick={this.handleClick} id="map" className="mapbox"></div>
         </div>
       </div>
     )
@@ -78,7 +98,7 @@ Sidenav = React.createClass({
   render() {
     return (
       <nav className="sidenav">
-        <SidenamTooltip
+        <SidenavTooltip
           showTooltip={this.state.showTooltip}
           tooltipDescription={this.state.tooltipDescription}
           tooltipX={this.state.tooltipX}
@@ -127,7 +147,7 @@ SidenavIcons = React.createClass({
   }
 })
 
-SidenamTooltip = React.createClass({
+SidenavTooltip = React.createClass({
   render(){
     tooltipStyle = {
       top: this.props.tooltipY,
