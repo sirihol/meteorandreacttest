@@ -232,7 +232,8 @@ textarea {
 .profile-wrapper{
   text-align: center;
   margin: 0px 10px 5px 10px;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .profile-banner{
@@ -249,20 +250,27 @@ textarea {
   margin: 10px 0px 0px 0px;
 }
 
-.user-content{
+.user-container{
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.trophy-setup{
-  justify-content: center;
+.trophy-container{
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  flex-flow: row wrap;
+  align-content: space-around;
+  align-items: center;
 }
 
 .trophy-item{
-    position: relative;
+    border-style: solid;
+    border-color: green;
+    padding: 5px 2.5px 5px 2.5px;
+    margin: 0px 2.5px 0px 2.5px;
     display: flex;
-    flex-direction: column;
+    flex-flow: column wrap;
     align-items: center;
-    justify-content: center;
+    align-content: center;
+    text-align: center;
+    justify-content: space-around;
   }

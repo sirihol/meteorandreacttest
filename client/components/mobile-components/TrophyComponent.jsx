@@ -23,13 +23,38 @@ TrophyComponent = React.createClass({
 
 	render: function() {
 		return (
-			<div className="trophy-setup">
+			<div className="trophy-container">
 				<div className="trophy-item">
 				<FloatingActionButton iconClassName="fa fa-trophy" disabled={true} />
-				<TextField className="username-textfield" disabled={true} defaultValue="Krim" underlineShow={false}/>
+				<p>Krim</p>
 				</div>
-				<div className="trophy-item"> 
+				<div className="trophy-item">
 				<FloatingActionButton iconClassName="fa fa-diamond" disabled={true} />
+				<p>Kjærlughet</p>
+				</div>
+				<div className="trophy-item">
+				<FloatingActionButton iconClassName="fa fa-diamond" disabled={true} />
+				<p>Kjærlughet</p>
+				</div>
+				<div className="trophy-item">
+				<FloatingActionButton iconClassName="fa fa-diamond" disabled={true} />
+				<p>Kjærlughet</p>
+				</div>
+				<div className="trophy-item">
+				<FloatingActionButton iconClassName="fa fa-diamond" disabled={true} />
+				<p>Kjærlughet</p>
+				</div>
+				<div className="trophy-item">
+				<FloatingActionButton iconClassName="fa fa-diamond" disabled={true} />
+				<p>Kjærlughet</p>
+				</div>
+				<div className="trophy-item">
+				<FloatingActionButton iconClassName="fa fa-diamond" disabled={true} />
+				<p>Kjærlughet</p>
+				</div>
+				<div className="trophy-item">
+				<FloatingActionButton iconClassName="fa fa-diamond" disabled={true} />
+				<p>Kjærlughet</p>
 				</div>
 
 			</div>

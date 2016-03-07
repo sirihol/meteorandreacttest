@@ -36,7 +36,7 @@ Profile = React.createClass({
 				<TextField className="username-textfield" disabled={true} defaultValue="Old Normann" underlineShow={false}/>
 				<Divider/>
 			</div>
-			<div className="user-content">
+			<div className="user-container">
 				<TrophyComponent />
 			</div>
 
