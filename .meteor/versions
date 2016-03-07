@@ -13,7 +13,7 @@ caching-html-compiler@1.0.2
 callback-hook@1.0.4
 check@1.1.0
 coffeescript@1.0.11
-cosmos:browserify@0.9.3
+cosmos:browserify@0.9.4
 ddp@1.2.2
 ddp-client@1.2.1
 ddp-common@1.2.2
@@ -28,6 +28,7 @@ fastclick@1.0.7
 fortawesome:fontawesome@4.5.0
 fourseven:scss@3.4.1
 geojson-utils@1.0.4
+gvikas:material-ui@0.14.4
 hot-code-push@1.0.0
 html-tools@1.0.5
 htmljs@1.0.5
@@ -52,6 +53,7 @@ npm-mongo@1.4.39_1
 observe-sequence@1.0.7
 ordered-dict@1.0.4
 pauloborges:mapbox@2.2.3_2
+planettraining:material-design-icons-font@2.1.1_2
 promise@0.5.1
 random@1.0.5
 react@0.14.3
@@ -59,6 +61,7 @@ react-meteor-data@0.2.4
 react-runtime@0.14.4
 react-runtime-dev@0.14.4
 react-runtime-prod@0.14.4
+react-template-helper@0.2.5
 reactive-dict@1.1.3
 reactive-var@1.0.6
 reactrouter:react-router@1.0.3

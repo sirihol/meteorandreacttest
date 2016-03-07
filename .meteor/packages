@@ -24,3 +24,7 @@ react
 reactrouter:react-router
 fortawesome:fontawesome
 pauloborges:mapbox
+react-template-helper
+cosmos:browserify@=0.9.4
+planettraining:material-design-icons-font
+gvikas:material-ui

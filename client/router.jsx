@@ -2,14 +2,22 @@ const {Router, Route, Rederict} = ReactRouter;
 
 const history = ReactRouter.history.useQueries(ReactRouter.history.createHistory)()
 
-Meteor.startup(function() {
-  let AppRoutes = (
-    <Router history= {history}>
-      <Route component={App}>
-        <Router component={Map} path="/" />
-        <Router component={Login} path="login" />
-      </Route>
-    </Router>
-  )
-  React.render(AppRoutes, document.body)
-})
+if (Meteor.isClient) {
+	Meteor.startup(function() {
+		Session.setDefault('count', 0);
+	  	let AppRoutes = (
+	    <Router history= {history}>
+	      <Route component={App}>
+	        <Router component={Mobile} path="/" />
+	      </Route>
+	    </Router>
+	  )
+	  ReactDOM.render(AppRoutes, document.body)
+	})
+	
+}
+
+/*
+
+	        <Router component={Login} path="login" />
+*/
