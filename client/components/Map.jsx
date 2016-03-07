@@ -1,13 +1,34 @@
 Meteor.startup(function() {
-  Mapbox.load();
+  Mapbox.load({
+    gl: true
+  });
 });
+
+var getUrl = function(lon, lat){
+  return `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lon},${lat}&key=${Meteor.settings.public.googleapis}`;
+}
+
+var xhr = new XMLHttpRequest();
+var map = {};
 
 Tracker.autorun(function () {
   if (Mapbox.loaded()) {
-    L.mapbox.accessToken = Meteor.settings.public.accessToken;
-    var map = L.mapbox.map("map", Meteor.settings.public.mapId);
- }
+    mapboxgl.accessToken = Meteor.settings.public.accessToken;
+    map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/siriholtnaes/cijj81zhp0078bolxxddj29nq',
+      center: [10.395151,63.427502], // starting position
+      zoom: 13
+    });
+
+    map.on('mousemove', function (e) {
+      document.getElementById('debugpanel').innerHTML =
+      JSON.stringify(e.point) + '<br />' +
+      JSON.stringify(e.lngLat);
+    });
+  }
 });
+
 
 Map = React.createClass({
   getInitialState() {
@@ -26,19 +47,27 @@ Map = React.createClass({
     })
   },
 
+  handleClick: function(){
+    map.on('click', function(e){
+      console.log(e.lngLat);
+      this.showModal(true);
+    })
+  },
+
   render() {
-		return (
+    return(
       <div>
-  			<Sidenav showModal={this.showModal}/>
-			<div className="content-wrapper">
-        <Modal
-          showModal={this.state.showModal}
-          hideModal={this.hideModal}/>
-				<div id="map" className="mapbox"></div>
-			</div>
-    </div>
-		)
-	}
+        <pre id='debugpanel'></pre>
+        <Sidenav showModal={this.showModal}/>
+        <div className="content-wrapper">
+          <Modal
+            showModal={this.state.showModal}
+            hideModal={this.hideModal}/>
+          <div onClick={this.handleClick} id="map" className="mapbox"></div>
+        </div>
+      </div>
+    )
+  }
 })
 
 Sidenav = React.createClass({
@@ -67,58 +96,58 @@ Sidenav = React.createClass({
     })
   },
   render() {
-		return (
-			<nav className="sidenav">
-      <SidenamTooltip
-        showTooltip={this.state.showTooltip}
-        tooltipDescription={this.state.tooltipDescription}
-        tooltipX={this.state.tooltipX}
-        tooltipY={this.state.tooltipY}/>
-			<ul className="sidenav-list">
-					<SidenavIcons
+    return (
+      <nav className="sidenav">
+        <SidenavTooltip
+          showTooltip={this.state.showTooltip}
+          tooltipDescription={this.state.tooltipDescription}
+          tooltipX={this.state.tooltipX}
+          tooltipY={this.state.tooltipY}/>
+        <ul className="sidenav-list">
+          <SidenavIcons
             showModal={this.props.showModal}
             setTooltipDescription={this.setTooltipDescription}
             showTooltip={this.showTooltip}
             hideTooltip={this.hideTooltip} />
-				</ul>
-			</nav>
-		)
-	}
+        </ul>
+      </nav>
+    )
+  }
 })
 
 
 SidenavIcons = React.createClass({
-	shouldComponentUpdate(nextProps, nextState) {
-		return nextProps.id !== this.props.id
-	},
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.id !== this.props.id
+  },
 
-	render(){
-		let iconList = [
-			{name: "fa fa-plus", description: "Nytt litterært sted" },
- 			{name: "fa fa-user", description: "Min profil" }
-		]
+  render(){
+    let iconList = [
+      {name: "fa fa-plus", description: "Nytt litterært sted" },
+      {name: "fa fa-user", description: "Min profil" }
+    ]
 
-		let list = iconList.map((item) => {
-			return (
-				<li key={item.name}
+    let list = iconList.map((item) => {
+      return (
+        <li key={item.name}
           onClick={this.props.showModal.bind(null, item.description)}
           onMouseEnter={this.props.setTooltipDescription.bind(null, item)}
           onMouseOver={this.props.showTooltip}
           onMouseOut={this.props.hideTooltip}
-					className="sidenav-list-item">
-					<i className={item.name}></i>
-				</li>
-			)
-		})
-		return (
+          className="sidenav-list-item">
+          <i className={item.name}></i>
+        </li>
+      )
+    })
+    return (
       <div>
         {list}
       </div>
     )
-	}
+  }
 })
 
-SidenamTooltip = React.createClass({
+SidenavTooltip = React.createClass({
   render(){
     tooltipStyle = {
       top: this.props.tooltipY,
