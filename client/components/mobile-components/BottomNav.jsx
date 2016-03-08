@@ -34,33 +34,30 @@ BottomNav = React.createClass({
 
   _setLabelAppBar(title){
 	this.props.setAppBarTitle(title);
-  	
+
   },
 
   render: function() {
     return (
     	<div className="bottomnav">
-    	<Tabs 
-    		initialSelectedIndex={1}
+    	<Tabs
+    		initialSelectedIndex={3}
     		ref="bottomTabs"
-    		> 
-    		<Tab 
+    		>
+    		<Tab
     			ref="tab1"
-    			icon={<FontIcon className="fa fa-list"></FontIcon>} 
-    			label= "LITTERATUR"
-    			onActive={this._setLabelAppBar.bind(null, "LITTERATUR")}
+    			icon={<FontIcon className="fa fa-list"></FontIcon>}
+    			onActive={this._setLabelAppBar.bind(null, "LITTERÆRE STEDER")}
     			/>
-    		<Tab 
+    		<Tab
     			ref="tab2"
     			icon={<FontIcon className="fa fa-map"></FontIcon>}
-    			label= "MAP"
-    			onActive={this._setLabelAppBar.bind(null, "HOME")}
+    			onActive={this._setLabelAppBar.bind(null, "KART")}
     			/>
-    		<Tab 
+    		<Tab
     			ref="tab3"
     			icon={<FontIcon className="fa fa-user"></FontIcon>}
-    			label= "USER"
-    			onActive={this._setLabelAppBar.bind(null, "USER")}
+    			onActive={this._setLabelAppBar.bind(null, "MIN PROFIL")}
     			/>
     	</Tabs>
     	</div>
