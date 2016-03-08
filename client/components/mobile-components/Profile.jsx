@@ -12,6 +12,7 @@ Profile = React.createClass({
 	getInitialState() {
 		return {
 			open: false,
+			trophyState: false 
 		};
 	},
 
@@ -21,23 +22,37 @@ Profile = React.createClass({
 		};
 	},
 
+	showTrophyComponent(){
+		this.setState({
+			trophyState: true 
+		})
+	},
+
+	hideTrophyComponent(e){
+		this.setState({
+			trophyState: false
+		});
+	},
+
 	render: function() {
 		return (
 		<div>
 			<div className="profile-wrapper">
-				<FloatingActionButton iconClassName="fa fa-trophy" />
+				<FloatingActionButton iconClassName="fa fa-trophy" onClick={this.showTrophyComponent} />
 				<div className="profile-banner" >
 						<Avatar
 							src="http://jackrussellterrierpet.com/wp-content/uploads/2013/03/Jack-Russell-Terrier-Crate-Training.jpg"
 							size={92}
 						/> 
 				</div>
-				<FloatingActionButton iconClassName="fa fa-wrench" />
+				<FloatingActionButton iconClassName="fa fa-wrench" onClick={this.hideTrophyComponent}/>
 				<TextField className="username-textfield" disabled={true} defaultValue="Old Normann" underlineShow={false}/>
 				<Divider/>
 			</div>
-			<div className="user-container">
-				<TrophyComponent />
+			<div>
+			<TrophyComponent 
+				trophyState={this.state.trophyState}
+			/>
 			</div>
 
 		</div>

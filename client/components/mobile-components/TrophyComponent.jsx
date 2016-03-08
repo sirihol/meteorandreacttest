@@ -22,10 +22,19 @@ TrophyComponent = React.createClass({
 	},
 
 	render: function() {
+		let trophyStyle = {
+      		visibility: "hidden",
+      		opacity: "0"
+    	}
+    	if (!!this.props.trophyState) {
+     		trophyStyle.visibility =  "visible"
+      		trophyStyle.opacity = "1"
+    	}
+
 		return (
-			<div className="trophy-container">
+			<div className="trophy-container" style={trophyStyle}>
 				<div className="trophy-item">
-				<FloatingActionButton iconClassName="fa fa-trophy" disabled={true} />
+				<FloatingActionButton iconClassName="fa fa-trophy" disabled={false} />
 				<p>Krim</p>
 				</div>
 				<div className="trophy-item">
