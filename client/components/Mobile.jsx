@@ -43,7 +43,7 @@ Mobile = React.createClass({
           iconElementLeft={<i> </i>}
           style={{backgroundColor: Colors.deepOrange300}}/>
 
-        <LiteraryTrails  />
+        <LiteraryTrails />
 
         <BottomNav
           setAppBarTitle={this.setAppBarTitle} />
