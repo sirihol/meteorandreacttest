@@ -39,6 +39,18 @@ Mobile = React.createClass({
     });
   },
 
+  showComponent(){
+    if(this.state.slideIndex == 0){
+      return <LiteraryTrails />;
+    }
+    if(this.state.slideIndex == 1){
+      return <MobileMap />;
+    }
+    if(this.state.slideIndex == 2){
+      return <Profile />;
+    }
+  },
+
   render() {
     return (
 
@@ -50,21 +62,8 @@ Mobile = React.createClass({
           iconElementLeft={<i> </i>}
           style={{backgroundColor: Colors.deepOrange300}}/>
 
-        <SwipeableViews
-            index={this.state.slideIndex}
-            onChangeIndex={this._handleChange} 
-            >
-            <div>
-              <LiteraryTrails />
-            </div>
-            <div>
-              <MobileMap />
-            </div>
-            <div>
-              <Profile />
-            </div>
-          </SwipeableViews>
-
+          {this.showComponent()}
+          
         <BottomNav
           setAppBarTitle={this.setAppBarTitle}
           slideIndex={this.state.slideIndex}

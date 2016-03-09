@@ -16,7 +16,7 @@ LiteraryTrails = React.createClass({
 	},
 
   render: function() {
-		return (
+		return ( 
 		<Card>
       <CardHeader
         title="Blodig Byhistorie"

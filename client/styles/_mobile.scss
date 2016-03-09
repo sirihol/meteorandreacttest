@@ -4,7 +4,7 @@
   bottom: 0px;
   width: 100%;
   box-shadow:  0px 0px 15px 0px #888;
-  z-index: 2;
+ /* z-index: 2; */
 }
 
 .title{
@@ -32,7 +32,7 @@
 }
 
 .user-container{
-  background-color: rgba(200, 200, 200, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .trophy-container{
@@ -54,4 +54,10 @@
     align-content: center;
     text-align: center;
     justify-content: space-around;
+  }
+
+  .debug-container{
+    border-style: solid;
+    border-color: green;
+    height: 80vh;
   }
