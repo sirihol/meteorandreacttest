@@ -1,8 +1,8 @@
 const { Tabs, Tab, FontIcon } = mui;
 
-BottomNav = React.createClass({
-  // This mixin makes the getMeteorData method work
 
+BottomNav = React.createClass({
+  
   getInitialState() {
     let ThemeManager = mui.Styles.ThemeManager
 
@@ -39,28 +39,28 @@ BottomNav = React.createClass({
 
   render: function() {
     return (
-    	<div className="bottomnav">
-    	<Tabs
-    		initialSelectedIndex={3}
-    		ref="bottomTabs"
-    		>
-    		<Tab
-    			ref="tab1"
-    			icon={<FontIcon className="fa fa-list"></FontIcon>}
-    			onActive={this._setLabelAppBar.bind(null, "LITTERÆRE STEDER")}
-    			/>
-    		<Tab
-    			ref="tab2"
-    			icon={<FontIcon className="fa fa-map"></FontIcon>}
-    			onActive={this._setLabelAppBar.bind(null, "KART")}
-    			/>
-    		<Tab
-    			ref="tab3"
-    			icon={<FontIcon className="fa fa-user"></FontIcon>}
-    			onActive={this._setLabelAppBar.bind(null, "MIN PROFIL")}
-    			/>
-    	</Tabs>
-    	</div>
+        <div className="bottomnav">
+          <Tabs
+            onChange={this.props._handleChange}
+            value={this.props.slideIndex}
+            >
+            <Tab
+              icon={<FontIcon className="fa fa-list"></FontIcon>}
+              onActive={this._setLabelAppBar.bind(null, "LITTERÆRE STEDER")}
+              value={0}
+              />
+            <Tab
+              icon={<FontIcon className="fa fa-map"></FontIcon>}
+              onActive={this._setLabelAppBar.bind(null, "KART")}
+              value={1}
+              />
+            <Tab
+              icon={<FontIcon className="fa fa-user"></FontIcon>}
+              onActive={this._setLabelAppBar.bind(null, "MIN PROFIL")}
+              value={2}
+              />
+          </Tabs>
+        </div>
     );
   }
 });
