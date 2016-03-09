@@ -12,7 +12,8 @@ Mobile = React.createClass({
   getInitialState() {
     return {
       open: false,
-      AppBarTitleState: "LOL"
+      AppBarTitleState: "WordSpaces",
+      slideIndex: 1,
     };
   },
 
@@ -32,6 +33,12 @@ Mobile = React.createClass({
     });
   },
 
+  _handleChange(value) {
+    this.setState({
+      slideIndex: value,
+    });
+  },
+
   render() {
     return (
 
@@ -43,10 +50,26 @@ Mobile = React.createClass({
           iconElementLeft={<i> </i>}
           style={{backgroundColor: Colors.deepOrange300}}/>
 
-        <LiteraryTrails />
+        <SwipeableViews
+            index={this.state.slideIndex}
+            onChangeIndex={this._handleChange}
+            >
+            <div>
+              <LiteraryTrails />
+            </div>
+            <div>
+              <MobileMap />
+            </div>
+            <div>
+              <Profile />
+            </div>
+          </SwipeableViews>
 
         <BottomNav
-          setAppBarTitle={this.setAppBarTitle} />
+          setAppBarTitle={this.setAppBarTitle}
+          slideIndex={this.state.slideIndex}
+          _handleChange={this._handleChange}
+           />
 
       </div>
     );

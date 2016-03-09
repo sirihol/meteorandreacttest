@@ -11,8 +11,7 @@ Profile = React.createClass({
 
 	getInitialState() {
 		return {
-			open: false,
-			trophyState: false 
+			trophyState: false,
 		};
 	},
 
@@ -49,15 +48,13 @@ Profile = React.createClass({
 				<TextField className="username-textfield" disabled={true} defaultValue="Old Normann" underlineShow={false}/>
 				<Divider/>
 			</div>
-			<div>
+			<div className="user-container">
 			<TrophyComponent 
 				trophyState={this.state.trophyState}
 			/>
 			</div>
-
 		</div>
-
-			);
+		);
 	}
 
 });
