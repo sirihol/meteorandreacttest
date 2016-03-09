@@ -53,16 +53,14 @@ Mobile = React.createClass({
         <SwipeableViews
             index={this.state.slideIndex}
             onChangeIndex={this._handleChange}
+            children={<LiteraryTrails />, <MobileMap />, <Profile />}
             >
-            <div>
-              <LiteraryTrails />
-            </div>
-            <div>
+            			<div className="debug-container">
+
+              <LiteraryTrailsList />
+              </div>
               <MobileMap />
-            </div>
-            <div>
               <Profile />
-            </div>
           </SwipeableViews>
 
         <BottomNav
