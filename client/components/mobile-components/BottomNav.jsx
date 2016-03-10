@@ -1,5 +1,11 @@
 const { Tabs, Tab, FontIcon } = mui;
 
+const styles = {
+  slide: {
+    height: 100,
+
+  }
+}
 
 BottomNav = React.createClass({
   
@@ -39,6 +45,7 @@ BottomNav = React.createClass({
 
   render: function() {
     return (
+      <div > 
         <div className="bottomnav">
           <Tabs
             onChange={this.props._handleChange}
@@ -61,6 +68,24 @@ BottomNav = React.createClass({
               />
           </Tabs>
         </div>
+      </div>
     );
   }
 });
+
+/*        <div>
+          <SwipeableViews
+            index={this.props.slideIndex}
+            onChangeIndex={this.props._handleChange} 
+            children={<LiteraryTrails />, <MobileMap />, <Profile />}
+            >
+            <div style={Object.assign({}, styles.slide)}>
+              <LiteraryTrails />
+            </div>
+
+              <MobileMap />
+
+              <Profile /> 
+          </SwipeableViews>
+          </div>
+          */
