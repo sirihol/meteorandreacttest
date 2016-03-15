@@ -4,10 +4,11 @@ $default-text-color: rgba(107,117,139,1);
 
 @import 'mobile';
 
-body, p, h1, h2, h3, h4, ul, li  {
+html, body, p, h1, h2, h3, h4, ul, li  {
   font-family: $font-stack;
   padding: 0;
   margin: 0;
+  height: 100%;
 }
 
 .sidenav{
@@ -177,6 +178,7 @@ textarea {
   bottom: 0;
   z-index: 0;
   width: 100%;
+  height: 100%;
 }
 
 .sidenav-tooltip {

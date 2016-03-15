@@ -2,7 +2,7 @@ const { Tabs, Tab, FontIcon } = mui;
 
 const styles = {
   slide: {
-    height: 100,
+    top: 0,
 
   }
 }
@@ -40,7 +40,6 @@ BottomNav = React.createClass({
 
   _setLabelAppBar(title){
 	this.props.setAppBarTitle(title);
-
   },
 
   render: function() {
@@ -73,7 +72,8 @@ BottomNav = React.createClass({
   }
 });
 
-/*        <div>
+/*        
+          <div>
           <SwipeableViews
             index={this.props.slideIndex}
             onChangeIndex={this.props._handleChange} 

@@ -5,6 +5,14 @@ const Colors = Styles.Colors;
 
 Profile = React.createClass({
 
+	mixins: [ReactMeteorData], 
+
+	getMeteorData(){
+		return {
+			trophies: Trophies.find({}).fetch()
+		}
+	},
+
 	childContextTypes : {
 		muiTheme: React.PropTypes.object
 	},
@@ -48,9 +56,10 @@ Profile = React.createClass({
 				<TextField className="username-textfield" disabled={true} defaultValue="Old Normann" underlineShow={false}/>
 				<Divider/>
 			</div>
-			<div className="user-container">
+			<div >
 			<TrophyComponent 
 				trophyState={this.state.trophyState}
+				trophies={this.data.trophies}
 			/>
 			</div>
 		</div>
