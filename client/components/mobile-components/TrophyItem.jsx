@@ -16,8 +16,13 @@ TrophyItem = React.createClass({
 	render: function() {
 		return (
 				<div className="trophy-item">
-				<FloatingActionButton iconClassName={this.props.trophy.icon} onTouchTap={this.props.handleDialogOpen} />
-					<Dialog title={this.props.trophy.title} actions={this.props.actions} modal={true} open={this.props.dialogState}> 
+				<FloatingActionButton iconClassName={this.props.trophy.icon} 
+									  onTouchTap={this.props.handleDialogOpen}
+									  backgroundColor={Colors.grey300} />
+					<Dialog title={this.props.trophy.title} 
+							actions={this.props.actions}
+							modal={true} 
+							open={this.props.dialogState} > 
 						{this.props.trophy.description}
 					</Dialog> 
 				<p>{this.props.trophy.title}</p>

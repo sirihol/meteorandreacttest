@@ -13,7 +13,7 @@ Mobile = React.createClass({
     return {
       open: false,
       AppBarTitleState: "WordSpaces",
-      slideIndex: 1,
+      slideIndex: 2,
     };
   },
 

@@ -29,3 +29,9 @@ cosmos:browserify@=0.9.4
 planettraining:material-design-icons-font
 gvikas:material-ui
 tmikeladze:react-swipeable-views
+accounts-password
+accounts-facebook
+useraccounts:bootstrap
+service-configuration
+accounts-ui
+useraccounts:unstyled
