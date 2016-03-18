@@ -1,5 +1,3 @@
-const { IconButton, Avatar, FloatingActionButton} = mui;
-
 Profile = React.createClass({
 
 	mixins: [ReactMeteorData],
@@ -7,7 +5,6 @@ Profile = React.createClass({
 	getMeteorData(){
 		return {
 			trophies: Trophies.find({}).fetch()
-
 			// To use collection in HTML: trophies={this.data.trophies}
 		}
 	},
@@ -16,10 +13,10 @@ Profile = React.createClass({
 		return (
 		<div>
       <div className='appBarTitle'>MIN PROFIL</div>
-			<TopNavigation />
+			<AppBar />
 			<ProfileDetails username='Bruker Brukernavn' />
 			<TrophyComponent />
-			<BottomNavigation />
+			<BottomNav />
 		</div>
 		);
 	}

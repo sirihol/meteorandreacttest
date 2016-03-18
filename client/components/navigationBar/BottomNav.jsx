@@ -1,6 +1,6 @@
 const {Link} = ReactRouter;
 
-BottomNavigation = React.createClass({
+BottomNav = React.createClass({
   render(){
     return(
       <div className='bottomNavigation'>

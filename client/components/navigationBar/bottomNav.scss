@@ -1,0 +1,19 @@
+.bottomNavigation{
+  background-color: #47A2CC;
+  position: fixed;
+  height: 10%;
+  width: 100%;
+  bottom: 0;
+  z-index: 100;
+  box-shadow: 0px 2px 10px -1px #212121;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.navigationButton{
+  .fa{
+    color: white;
+    font-size: 3vh;
+  }
+}
