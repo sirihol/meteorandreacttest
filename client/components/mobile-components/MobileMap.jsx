@@ -1,10 +1,12 @@
+
 let firstRun = false;
 
 Meteor.startup(function() {
-  Mapbox.load(
+  Mapbox.load({
     gl: true
-  );
-});
+  });
+  // Mapbox.load();
+})
 
 // var getUrl = function(lon, lat){
 //   return `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lon},${lat}&key=${Meteor.settings.public.googleapis}`;
@@ -18,7 +20,7 @@ Tracker.autorun(function () {
 })
 
 function updateMapboxGL(){
-    if(Mapbox.loaded()){
+    if(Mapbox.loaded()) {
       mapboxgl.accessToken = Meteor.settings.public.accessToken;
       var map = new mapboxgl.Map({
         container: 'map',
@@ -26,7 +28,7 @@ function updateMapboxGL(){
         center: [10.395151,63.427502], // starting position
         zoom: 13
       });
-  });
+  };
 }
 
 function updateMap(){
