@@ -7,17 +7,15 @@ if (Meteor.isClient) {
 	  	let AppRoutes = (
 	    <Router history= {history}>
 	      <Route component={App}>
-	        <Router component={AccountsUIWrapper} path="/" />
-	        <Router component={Mobile} path="/mobile" /> 
+			<Router component={LiteraryTrail} path="literaryTrail/:id" />
+			<Router component={LiteraryTrails} path="literaryTrails" />
+			<Router component={MobileMap} path="/" />
+			<Router component={Profile} path="profile" />
+			<Router component={LiteraryTrailMap} path="literaryTrail/map/:id" />
 	      </Route>
 	    </Router>
 	  )
-	  ReactDOM.render(AppRoutes, document.body)
+	  ReactDOM.render(AppRoutes, document.getElementById("render-target"));
 	})
-	
 }
-
-/*
-
-	        <Router component={Login} path="login" />
-*/
+	        //<Router component={AccountsUIWrapper} path="/" />

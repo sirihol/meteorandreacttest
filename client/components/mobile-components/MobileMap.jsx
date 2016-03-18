@@ -1,61 +1,73 @@
-const { IconButton, FontIcon} = mui;
-const { MenuItem } = mui.Menus;
-const Styles = mui.Styles;
-const Colors = Styles.Colors;
+
+let firstRun = false;
 
 Meteor.startup(function() {
-  Mapbox.load(
-    /*{
+  Mapbox.load({
     gl: true
-  }*/
-  );
-});
+  });
+  // Mapbox.load();
+})
 
-var getUrl = function(lon, lat){
-  return `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lon},${lat}&key=${Meteor.settings.public.googleapis}`;
-}
-
-var xhr = new XMLHttpRequest();
-var map = {};
+// var getUrl = function(lon, lat){
+//   return `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lon},${lat}&key=${Meteor.settings.public.googleapis}`;
+// }
 
 Tracker.autorun(function () {
-    if (Mapbox.loaded()) {
+  if (Mapbox.loaded()) {
+    // updateMap();
+    updateMapboxGL();
+  }
+})
+
+function updateMapboxGL(){
+    if(Mapbox.loaded()) {
+      mapboxgl.accessToken = Meteor.settings.public.accessToken;
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/siriholtnaes/cijj81zhp0078bolxxddj29nq',
+        center: [10.395151,63.427502], // starting position
+        zoom: 13
+      });
+  };
+}
+
+function updateMap(){
+  if(Mapbox.loaded()){
     L.mapbox.accessToken = Meteor.settings.public.accessToken;
-    map = L.mapbox.map("map", Meteor.settings.public.mapId);
-    map.invalidateSize();
- }
-  /*if (Mapbox.loaded()) {
-    mapboxgl.accessToken = Meteor.settings.public.accessToken;
-    map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/siriholtnaes/cijj81zhp0078bolxxddj29nq',
-      center: [10.395151,63.427502], // starting position
-      zoom: 13
-    });
-    map.resize();
-    {console.log("map object: ", map)}
-  }*/
-});
+		var map = L.mapbox.map("map", "mapbox.streets");
+  }
+}
 
 MobileMap = React.createClass({
-
-  childContextTypes : {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: Styles.ThemeManager.getMuiTheme(Styles.LightRawTheme)
-    };
-  },
-
   render() {
+    // console.log("Rendrer MobileMap.jsx - nå rendrer() jeg siden");
     return(
       <div>
+        <div className='appBarTitle'>KART</div>
+        <TopNavigation />
         <div className="content-wrapper">
           <div id="map" className="mapbox"></div>
         </div>
+
+        <BottomNavigation />
       </div>
     )
+  },
+
+
+  componentDidMount(nextProps,nextState){
+    // console.log("MobileMap.jsx is mounted - jeg kalles når render() er ferdig");
+      if(firstRun){
+        updateMapboxGL();
+      }
+      firstRun = true;
+  },
+
+  componentWillUpdate(nextProps,nextState){
+    // console.log("MobileMap.jsx willUpdate - jeg skal kalles først");
+  },
+
+  componentDidUpdate(nextProp, nextState){
+    // console.log("MobileMap.jsx didUpdate - jeg skal kalles sist");
   }
 })

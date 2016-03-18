@@ -4,66 +4,59 @@ const Styles = mui.Styles;
 const Colors = Styles.Colors;
 
 TrophyComponent = React.createClass({
-
-		childContextTypes : {
-		muiTheme: React.PropTypes.object
-	},
-
-	getInitialState() {
-		return {
-			dialogState: false,
-		};
-	},
-
-	getChildContext() {
-		return {
-			muiTheme: Styles.ThemeManager.getMuiTheme(Styles.LightRawTheme)
-		};
-	},
-
-	handleDialogOpen() {
-		this.setState({ dialogState: true});
-	},
-
-	handleDialogClose() {
-		this.setState({ dialogState: false});
-	},
-
-	renderTrophies() { 
-	   	const actions = [
-    		<RaisedButton
-    			label = "OK"
-    			secondary = {true}
-    			onTouchTap={this.handleDialogClose} 
-    		/>,
-    	];
-		return this.props.trophies.map((trophy) => {
-				return <TrophyItem 
-							key={trophy._id}  
-							trophy={trophy} 
-							actions={actions} 
-							handleDialogOpen={this.handleDialogOpen}
-							handleDialogClose={this.handleDialogClose}
-							dialogState={this.state.dialogState}
-						/>
-
-		});
-	},
-
-	render: function() {
-		let trophyStyle = {
-      		visibility: "hidden",
-      		opacity: "0"
-    	}
-    	if (!!this.props.trophyState) {
-     		trophyStyle.visibility =  "visible"
-      		trophyStyle.opacity = "1"
-    	}
-
+	render() {
 		return (
-			<div className="trophy-container" style={trophyStyle}>
-				{this.renderTrophies()}
+		<div className='trophyWrapper'>
+			<div className='trophyContainer'>
+				<TrophyItem iconName='fa fa-trophy' iconText='Nybegynner'/>
+				<TrophyItem iconName='fa fa-trophy' iconText='Eventyrlysten'/>
+				<TrophyItem iconName='fa fa-trophy' iconText='Lokal'/>
+				<TrophyItem iconName='fa fa-trophy' iconText='Sosial'/>
+				<TrophyItem iconName='fa fa-trophy' iconText='Etterforsker'/>
+				<TrophyItem iconName='fa fa-trophy' iconText='Poet'/>
+				<TrophyItem iconName='fa fa-trophy' iconText='Sosial'/>
+				<TrophyItem iconName='fa fa-trophy' iconText='Etterforsker'/>
+				<TrophyItem iconName='fa fa-trophy' iconText='Poet'/>
+			</div>
+		</div>
+		);
+	}
+})
+
+TrophyItem = React.createClass({
+	getInitialState(){
+    return{
+        showTrophyDescription: false,
+      }
+  },
+
+	showDescription(){
+		this.setState({
+			showTrophyDescription: !this.state.showTrophyDescription
+		});
+		console.log('Shows description: ' + this.state.showTrophyDescription);
+	},
+
+	render(){
+		return(
+			<div className='trophyItem' onClick={this.showDescription}>
+				<div className='trophyIcon'>
+					<i className={this.props.iconName}></i>
+				</div>
+				<p>{this.props.iconText}</p>
 			</div>
 		);
 	}
-});
+})
+
+TrophyDescription = React.createClass({
+	render(){
+		return(
+			<div className='trophyDescriptionWrapper'>
+				<div className='trophyDescription'>
+					{this.props.description}
+				</div>
+			</div>
+		);
+	}
+})

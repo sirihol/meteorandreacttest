@@ -23,15 +23,18 @@ fourseven:scss
 react
 reactrouter:react-router
 fortawesome:fontawesome
-pauloborges:mapbox
 react-template-helper
 cosmos:browserify@=0.9.4
 planettraining:material-design-icons-font
 gvikas:material-ui
 tmikeladze:react-swipeable-views
+<<<<<<< HEAD
 accounts-password
 accounts-facebook
 useraccounts:bootstrap
 service-configuration
 accounts-ui
 useraccounts:unstyled
+=======
+pauloborges:mapbox
+>>>>>>> 9e17e292869f7197c9d9a9178d9dbb74a4f79945
