@@ -1,7 +1,5 @@
 settings.json
 
-
-
 # Created by https://www.gitignore.io/api/osx,meteorjs
 
 ### OSX ###
@@ -68,7 +66,6 @@ settings.json
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/uiDesigner.xml
-
 
 # Gradle:
 .idea/gradle.xml
