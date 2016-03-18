@@ -4,80 +4,60 @@ const Styles = mui.Styles;
 const Colors = Styles.Colors;
 
 TrophyComponent = React.createClass({
-
-		childContextTypes : {
-		muiTheme: React.PropTypes.object
-	},
-
-	getInitialState() {
-		return {
-			open: false,
-		};
-	},
-
-	getChildContext() {
-		return {
-			muiTheme: Styles.ThemeManager.getMuiTheme(Styles.LightRawTheme)
-		};
-	},
-
-	render: function() {
-		let trophyStyle = {
-      		visibility: "hidden",
-      		opacity: "0"
-    	}
-    	if (!!this.props.trophyState) {
-     		trophyStyle.visibility =  "visible"
-      		trophyStyle.opacity = "1"
-    	}
-
+	render() {
 		return (
-			<div className="trophy-container" style={trophyStyle}>
-				<div className="trophy-item">
-				<FloatingActionButton iconClassName="fa fa-trophy" disabled={false} />
-				<p>Krim</p>
-				</div>
-				<div className="trophy-item">
-				<FloatingActionButton iconClassName="fa fa-diamond" disabled={true} />
-				<p>Kjærlughet</p>
-				</div>
-				<div className="trophy-item">
-				<FloatingActionButton iconClassName="fa fa-diamond" disabled={true} />
-				<p>Kjærlughet</p>
-				</div>
-				<div className="trophy-item">
-				<FloatingActionButton iconClassName="fa fa-diamond" disabled={true} />
-				<p>Kjærlughet</p>
-				</div>
-				<div className="trophy-item">
-				<FloatingActionButton iconClassName="fa fa-diamond" disabled={true} />
-				<p>Kjærlughet</p>
-				</div>
-				<div className="trophy-item">
-				<FloatingActionButton iconClassName="fa fa-diamond" disabled={true} />
-				<p>Kjærlughet</p>
-				</div>
-				<div className="trophy-item">
-				<FloatingActionButton iconClassName="fa fa-diamond" disabled={true} />
-				<p>Kjærlughet</p>
-				</div>
-				<div className="trophy-item">
-				<FloatingActionButton iconClassName="fa fa-diamond" disabled={true} />
-				<p>Kjærlughet</p>
-				</div>
+		<div className='trophyWrapper'>
+			<div className='trophyContainer'>
+				<TrophyItem iconName='fa fa-trophy' iconText='Nybegynner'/>
+				<TrophyItem iconName='fa fa-trophy' iconText='Eventyrlysten'/>
+				<TrophyItem iconName='fa fa-trophy' iconText='Lokal'/>
+				<TrophyItem iconName='fa fa-trophy' iconText='Sosial'/>
+				<TrophyItem iconName='fa fa-trophy' iconText='Etterforsker'/>
+				<TrophyItem iconName='fa fa-trophy' iconText='Poet'/>
+				<TrophyItem iconName='fa fa-trophy' iconText='Sosial'/>
+				<TrophyItem iconName='fa fa-trophy' iconText='Etterforsker'/>
+				<TrophyItem iconName='fa fa-trophy' iconText='Poet'/>
+			</div>
+		</div>
 
+		);
+	}
+})
+
+TrophyItem = React.createClass({
+	getInitialState(){
+    return{
+        showTrophyDescription: false,
+      }
+  },
+
+	showDescription(){
+		this.setState({
+			showTrophyDescription: !this.state.showTrophyDescription
+		});
+		console.log('Shows description: ' + this.state.showTrophyDescription);
+	},
+
+	render(){
+		return(
+			<div className='trophyItem' onClick={this.showDescription}>
+				<div className='trophyIcon'>
+					<i className={this.props.iconName}></i>
+				</div>
+				<p>{this.props.iconText}</p>
 			</div>
 		);
 	}
+})
 
-});
-			/*<FloatingActionButton iconClassName="fa fa-trophy" disabled={true}/>
-				<FloatingActionButton iconClassName="fa fa-trophy" disabled={true}/>
-				<FloatingActionButton iconClassName="fa fa-trophy" disabled={true}/>
-				<FloatingActionButton iconClassName="fa fa-trophy" disabled={true}/>
-				<br />
-				<FloatingActionButton iconClassName="fa fa-star" disabled={true}/>
-				<FloatingActionButton iconClassName="fa fa-star" disabled={true}/>
-				<FloatingActionButton iconClassName="fa fa-star" disabled={true}/>
-				<FloatingActionButton iconClassName="fa fa-star" disabled={true}/>
-				<FloatingActionButton iconClassName="fa fa-diamond" disabled={true}/>*/
+TrophyDescription = React.createClass({
+	render(){
+		return(
+			<div className='trophyDescriptionWrapper'>
+				<div className='trophyDescription'>
+					{this.props.description}
+				</div>
+			</div>
+		);
+	}
+})

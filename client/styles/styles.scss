@@ -5,7 +5,8 @@ $default-text-color: rgba(107,117,139,1);
 @import 'mobile';
 
 body, p, h1, h2, h3, h4, ul, li  {
-  font-family: $font-stack;
+  font-family
+  : $font-stack;
   padding: 0;
   margin: 0;
 }
