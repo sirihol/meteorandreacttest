@@ -1,8 +1,3 @@
-const { RaisedButton, FloatingActionButton, Divider, FlatButton} = mui;
-const { MenuItem } = mui.Menus;
-const Styles = mui.Styles;
-const Colors = Styles.Colors;
-
 TrophyComponent = React.createClass({
 	render() {
 		return (

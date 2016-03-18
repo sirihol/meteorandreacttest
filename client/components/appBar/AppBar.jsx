@@ -1,4 +1,4 @@
-TopNavigation = React.createClass({
+AppBar = React.createClass({
   render(){
     return(
       <div className='topNavigation'>

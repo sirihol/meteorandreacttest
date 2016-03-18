@@ -7,11 +7,11 @@ if (Meteor.isClient) {
 	  	let AppRoutes = (
 	    <Router history= {history}>
 	      <Route component={App}>
-			<Router component={LiteraryTrail} path="literaryTrail/:id" />
-			<Router component={LiteraryTrails} path="literaryTrails" />
-			<Router component={MobileMap} path="/" />
-			<Router component={Profile} path="profile" />
-			<Router component={LiteraryTrailMap} path="literaryTrail/map/:id" />
+					<Router component={LiteraryTrail} path="literaryTrail/:id" />
+					<Router component={LiteraryTrails} path="literaryTrails" />
+					<Router component={Map} path="/" />
+					<Router component={Profile} path="profile" />
+					<Router component={LiteraryTrailMap} path="literaryTrail/map/:id" />
 	      </Route>
 	    </Router>
 	  )

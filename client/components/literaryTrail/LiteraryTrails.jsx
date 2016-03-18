@@ -5,7 +5,7 @@ LiteraryTrails = React.createClass({
     return (
       <div>
         <div className='appBarTitle'>LITTERÆRE LØYPER</div>
-        <TopNavigation />
+        <AppBar />
         <div className='literaryTrailCardContainer'>
 
          <LiteraryTrailCard
@@ -30,7 +30,7 @@ LiteraryTrails = React.createClass({
          </LiteraryTrailCard>
 
         </div>
-        <BottomNavigation />
+        <BottomNav />
       </div>
     );
   }
@@ -52,23 +52,23 @@ LiteraryTrailCard = React.createClass({
   render: function() {
 		return (
       <div>
-        <div className='literaryTrailCard'>
+        <div className={this.state.expandDetails ? 'literaryTrailCardExpanded' : 'literaryTrailCard'} onClick={this.expandDetailsToggle}>
           <div className='trailDetails'>
             <h1>{this.props.title}</h1>
             <h2>{this.props.author}</h2>
             <p className={this.state.expandDetails ? 'fa fa-chevron-up' : 'fa fa-chevron-down'} onClick={this.expandDetailsToggle} />
           </div>
-        </div>
-
-        <div className='moreTrailDetailsContainer'>
-          <div className='moreTrailDetails'>
-            <p>Lengde: {this.props.length}</p>
-            <p>Antall litterære steder: {this.props.numLiteraryPlaces}</p>
-            <p>Lest av: {this.props.readBy}</p> <b/>
-            <p>{this.props.text}</p>
-            <Link to={'literaryTrail/' + this.props.id}>
-              <div className='flatbutton'>Start litterær løype</div>
-            </Link>
+          <div className='moreTrailDetailsContainer'>
+            <div className='moreTrailDetails'>
+              <p><b>Antall litterære steder:</b> {this.props.numLiteraryPlaces}</p>
+              <p><b>Lengde:</b> {this.props.length}</p>
+              <p><b>Lest av:</b> {this.props.readBy}</p>
+              <br/>
+              <p>{this.props.text}</p>
+              <Link to={'literaryTrail/' + this.props.id}>
+                <div className='flatbutton'>Start litterær løype</div>
+              </Link>
+            </div>
           </div>
         </div>
     </div>

@@ -1,4 +1,3 @@
-
 let firstRun = false;
 
 Meteor.startup(function() {
@@ -38,18 +37,17 @@ function updateMap(){
   }
 }
 
-MobileMap = React.createClass({
+Map = React.createClass({
   render() {
     // console.log("Rendrer MobileMap.jsx - nå rendrer() jeg siden");
     return(
       <div>
         <div className='appBarTitle'>KART</div>
-        <TopNavigation />
+        <AppBar />
         <div className="content-wrapper">
           <div id="map" className="mapbox"></div>
         </div>
-
-        <BottomNavigation />
+        <BottomNav />
       </div>
     )
   },
