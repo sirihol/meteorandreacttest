@@ -4,9 +4,11 @@ const Styles = mui.Styles;
 const Colors = Styles.Colors;
 
 Meteor.startup(function() {
-  Mapbox.load({
+  Mapbox.load(
+    /*{
     gl: true
-  });
+  }*/
+  );
 });
 
 var getUrl = function(lon, lat){
@@ -17,7 +19,12 @@ var xhr = new XMLHttpRequest();
 var map = {};
 
 Tracker.autorun(function () {
-  if (Mapbox.loaded()) {
+    if (Mapbox.loaded()) {
+    L.mapbox.accessToken = Meteor.settings.public.accessToken;
+    map = L.mapbox.map("map", Meteor.settings.public.mapId);
+    map.invalidateSize();
+ }
+  /*if (Mapbox.loaded()) {
     mapboxgl.accessToken = Meteor.settings.public.accessToken;
     map = new mapboxgl.Map({
       container: 'map',
@@ -25,26 +32,28 @@ Tracker.autorun(function () {
       center: [10.395151,63.427502], // starting position
       zoom: 13
     });
-  }
+    map.resize();
+    {console.log("map object: ", map)}
+  }*/
 });
 
 MobileMap = React.createClass({
 
   childContextTypes : {
-		muiTheme: React.PropTypes.object
-	},
+    muiTheme: React.PropTypes.object
+  },
 
-	getChildContext() {
-		return {
-			muiTheme: Styles.ThemeManager.getMuiTheme(Styles.LightRawTheme)
-		};
-	},
+  getChildContext() {
+    return {
+      muiTheme: Styles.ThemeManager.getMuiTheme(Styles.LightRawTheme)
+    };
+  },
 
   render() {
     return(
       <div>
         <div className="content-wrapper">
-          <div onClick={this.handleClick} id="map" className="mapbox"></div>
+          <div id="map" className="mapbox"></div>
         </div>
       </div>
     )

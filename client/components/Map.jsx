@@ -1,4 +1,4 @@
-Meteor.startup(function() {
+/*Meteor.startup(function() {
   Mapbox.load({
     gl: true
   });
@@ -168,3 +168,4 @@ SidenavTooltip = React.createClass({
     )
   }
 })
+*/
