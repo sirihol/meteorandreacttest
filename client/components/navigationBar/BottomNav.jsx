@@ -4,9 +4,9 @@ BottomNav = React.createClass({
   render(){
     return(
       <div className='bottomNavigation'>
-        <NavigationButton linkto='literaryTrails' iconName='fa fa-list' />
-        <NavigationButton linkto='/' iconName='fa fa-map' />
-        <NavigationButton linkto='profile' iconName='fa fa-user' />
+        <NavigationButton linkto='literaryTrails' iconName='fa fa-list' iconLabel='Løyper' />
+        <NavigationButton linkto='/' iconName='fa fa-map'  iconLabel='Kart'/>
+        <NavigationButton linkto='profile' iconName='fa fa-user'  iconLabel='Profil' />
       </div>
     );
   }
@@ -17,7 +17,8 @@ NavigationButton = React.createClass({
     return(
       <Link to={this.props.linkto}>
         <div className='navigationButton'>
-            <p className={this.props.iconName}/>
+            <i className={this.props.iconName}></i>
+            <div className='iconLabel'>{this.props.iconLabel}</div>
           </div>
       </Link>
     );

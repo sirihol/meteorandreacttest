@@ -1,55 +1,104 @@
 TrophyComponent = React.createClass({
+	getInitialState() {
+	  return {
+	    showModal: false
+	  }
+	},
+
 	render() {
 		return (
 		<div className='trophyWrapper'>
-			<div className='trophyContainer'>
-				<TrophyItem iconName='fa fa-trophy' iconText='Nybegynner'/>
-				<TrophyItem iconName='fa fa-trophy' iconText='Eventyrlysten'/>
-				<TrophyItem iconName='fa fa-trophy' iconText='Lokal'/>
-				<TrophyItem iconName='fa fa-trophy' iconText='Sosial'/>
-				<TrophyItem iconName='fa fa-trophy' iconText='Etterforsker'/>
-				<TrophyItem iconName='fa fa-trophy' iconText='Poet'/>
-				<TrophyItem iconName='fa fa-trophy' iconText='Sosial'/>
-				<TrophyItem iconName='fa fa-trophy' iconText='Etterforsker'/>
-				<TrophyItem iconName='fa fa-trophy' iconText='Poet'/>
-			</div>
+			<TrophyItems showModal={this.props.showModal}/>
+			<Modal showModal={this.state.showModal} />
 		</div>
 		);
 	}
 })
 
-TrophyItem = React.createClass({
-	getInitialState(){
-    return{
-        showTrophyDescription: false,
-      }
-  },
-
-	showDescription(){
-		this.setState({
-			showTrophyDescription: !this.state.showTrophyDescription
-		});
-		console.log('Shows description: ' + this.state.showTrophyDescription);
-	},
-
+TrophyItems = React.createClass({
 	render(){
 		return(
-			<div className='trophyItem' onClick={this.showDescription}>
-				<div className='trophyIcon'>
-					<i className={this.props.iconName}></i>
-				</div>
-				<p>{this.props.iconText}</p>
+			<div className='trophyContainer'>
+				<TrophyItem
+					trophyIcon='fa fa-check'
+					trophyName='Nybegynner'
+					trophyDescription='Lastet ned applikasjonen.'/>
+
+				<TrophyItem
+					trophyIcon='fa fa-fort-awesome'
+					trophyName='Eventyrlysten'
+					trophyDescription='Gått en eventyrløype.'/>
+
+				<TrophyItem
+					trophyIcon='fa fa-flag'
+					trophyName='Lokal'
+					trophyDescription='Gått tre løyper i samme område'/>
+
+				<TrophyItem
+					trophyIcon='fa fa-users'
+					trophyName='Sosial'
+					trophyDescription='Delt på facebook tre ganger.'/>
+
+				<TrophyItem
+					trophyIcon='fa fa-search'
+					trophyName='Etterforsker'
+					trophyDescription='Gjennomført en krimløype.'/>
+
+				<TrophyItem
+					trophyIcon='fa fa-facebook-square'
+					trophyName='Facebook'
+					trophyDescription='Delt på facebook.'/>
+
+				<TrophyItem
+					trophyIcon='fa fa-thumbs-up'
+					trophyName='Aktiv'
+					trophyDescription='Gått tre løyper.'/>
+
+				<TrophyItem
+					trophyIcon='fa fa-heart'
+					trophyName='Poet'
+					trophyDescription='Gjennomført en poesiløype.'/>
+
+				<TrophyItem
+					trophyIcon='fa fa-play-circle'
+					trophyName='God lytter'
+					trophyDescription='Lyttet til fem tekster.'/>
+
 			</div>
 		);
 	}
 })
 
-TrophyDescription = React.createClass({
+TrophyItem = React.createClass({
 	render(){
 		return(
-			<div className='trophyDescriptionWrapper'>
-				<div className='trophyDescription'>
-					{this.props.description}
+			<div className='trophyItem'>
+				<div className='trophyIcon'>
+					<i className={this.props.trophyIcon}></i>
+				</div>
+				<div className='trophyName' >{this.props.trophyName}</div>
+			</div>
+		);
+	}
+})
+
+Modal = React.createClass({
+	render(){
+		let modalStyle = {
+    	visibility: 'hidden'
+  	}
+  	if (!!this.props.showModal) {
+    	modalStyle.visibility =  'visible'
+  	}
+
+		return(
+			<div className='contentWrapper'>
+				<div className='modalActiveDarken' style={modalStyle}>
+					<div className='modalContainer'>
+						<h1>{this.props.trophyName}</h1>
+						<h2>{this.props.trophyDescription}</h2>
+						<i className='fa fa-close closeModal'></i>
+					</div>
 				</div>
 			</div>
 		);

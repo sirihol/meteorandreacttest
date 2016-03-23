@@ -38,35 +38,40 @@
 
   .fa{
     color: white;
-    font-size: 7vh;
+    font-size: 5vh;
   }
 }
 
-.trophyDescriptionWrapper{
+.trophyName{
+  font-size: 2.5vh;
+}
+
+.contentWrapper{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.modalActiveDarken{
+  background-color: rgba(25, 52, 64, 0.9);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
 }
+.modalContainer{
+  width: 60%;
+  min-height: 50%;
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 5px 8px 10px 0px #565656;
 
-.trophyDescription{
-  width: 50%;
-  height: 40%;
-  background-color: beige;
-}
-
-.appBarLiteraryTrail{
-  background-color: #47A2CC;
-  position: fixed;
-  height: 200px;
-  width: 100%;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0px 2px 10px -1px #212121;
-
-  .title{
-    top:60px;
-    position: relative;
+  .closeModal{
+    position: absolute;
+    color: #4791B2;
+    font-size: 4vh;
+    right: 13vh;
+    top: 14vh;
   }
 }

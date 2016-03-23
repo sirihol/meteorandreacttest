@@ -1,7 +1,10 @@
+$top: 15%;
+
+
 .topNavigation{
   background-color: #47A2CC;
   position: fixed;
-  height: 15%;
+  height: $top;
   width: 100%;
   top: 0;
   z-index: 100;
@@ -15,7 +18,7 @@
 
 .appBarTitle{
   z-index: 2000;
-  height: 15%;
+  height: $top;
   width: 100%;
   position: fixed;
   display: flex;

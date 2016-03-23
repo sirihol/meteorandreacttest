@@ -10,9 +10,9 @@ if (Meteor.isClient) {
 	      <Route component={App}>
 					<Router component={LiteraryTrail} path="literaryTrail/:id" />
 					<Router component={LiteraryTrails} path="literaryTrails" />
-					<Router component={Map} path="/" />
+					<Router component={MapPage} path="/" />
 					<Router component={Profile} path="profile" />
-					<Router component={LiteraryTrailMap} path="literaryTrail/map/:id" />
+					<Router component={LiteraryTrailMap} path="literaryTrail/:id/map" />
 	      </Route>
 	    </Router>
 	  )

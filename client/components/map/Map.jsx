@@ -41,17 +41,11 @@ Map = React.createClass({
   render() {
     // console.log("Rendrer MobileMap.jsx - nå rendrer() jeg siden");
     return(
-      <div>
-        <div className='appBarTitle'>KART</div>
-        <AppBar />
-        <div className="content-wrapper">
-          <div id="map" className="mapbox"></div>
-        </div>
-        <BottomNav />
+      <div className="content-wrapper">
+        <div id="map" className="mapbox"></div>
       </div>
     )
   },
-
 
   componentDidMount(nextProps,nextState){
     // console.log("MobileMap.jsx is mounted - jeg kalles når render() er ferdig");
@@ -67,5 +61,18 @@ Map = React.createClass({
 
   componentDidUpdate(nextProp, nextState){
     // console.log("MobileMap.jsx didUpdate - jeg skal kalles sist");
+  }
+})
+
+MapPage = React.createClass({
+  render(){
+    return(
+      <div>
+        <div className='appBarTitle'>KART</div>
+        <AppBar />
+        <Map />
+        <BottomNav />
+      </div>
+    )
   }
 })

@@ -14,8 +14,8 @@ Profile = React.createClass({
 		<div>
       <div className='appBarTitle'>MIN PROFIL</div>
 			<AppBar />
-			<ProfileDetails username='Bruker Brukernavn' />
-			<TrophyComponent />
+			<ProfileDetails username='Siri Holtnæs' />
+			<TrophyComponent showModal={this.showModal} />
 			<BottomNav />
 		</div>
 		);
@@ -27,9 +27,9 @@ ProfileDetails = React.createClass({
 		return(
 			<div className='profileDetailsContainer'>
 				<div className='user'>
-					<img className='user' alt="profile-pic" src="http://elishaterada.com/wp-content/themes/et/assets/img/elishaterada.jpg" />
+					<img className='user' alt='profile-pic' src='/resources/profilepic.jpg'/>
 				</div>
-				{this.props.username}
+				<div className='userName'>{this.props.username}</div>
 			</div>
 		);
 	}

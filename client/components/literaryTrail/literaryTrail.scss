@@ -1,15 +1,48 @@
+$top: 15%;
+
+.literaryTrail{
+  width: 100%;
+  top: $top;
+  position: absolute;
+}
+
 .literaryPlaces{
-  margin-top: 210px;
+  margin-top: 10px;
 }
 
 .literaryPlaceCard{
   background-color: #4791B2;
-  margin: 10px;
-  border-radius:2px;
+  margin: 30px;
+  border-radius: 2px;
+  height: 20vh;
 
   .primarytext{
-    margin-left: 10px;
-    padding: 16px;
+    margin-left: 2vh;
+
+    .mapMarker{
+      position: static;
+      margin-top: 5px;
+      height: inherit;
+      font-size: 3vh;
+    }
+
+    .book{
+    height: inherit;
+    position: absolute;
+    right: 20%;
+    margin-top: -5vh;
+    font-size: 4vh;
+    color: pink;
+    }
+
+    .playCircle{
+    height: inherit;
+    position: absolute;
+    margin-top: -5vh;
+    right: 10%;
+    font-size: 4vh;
+    color: pink;
+    }
   }
 
   .actions{
@@ -17,48 +50,135 @@
   }
 
   h1{
-    font-size: 20px;
+    font-size: 3vh;
+    margin-top: 1vh;
+  }
+  .textArea{
+    height: 0;
+    visibility: hidden;
+  }
+}
+
+.literaryPlaceCardExpanded{
+  background-color: #4791B2;
+  margin: 30px;
+  border-radius: 2px;
+  padding-bottom: 2vh;
+
+  .primarytext{
+    margin-left: 2vh;
+    padding: 16px;
+
+    .mapMarker{
+      position: static;
+      margin-top: 5px;
+      height: inherit;
+      font-size: 3vh;
+    }
+
+    .book{
+    height: inherit;
+    position: absolute;
+    right: 20%;
+    margin-top: -5vh;
+    font-size: 4vh;
+    color: pink;
+    }
+
+    .playCircle{
+    height: inherit;
+    position: absolute;
+    margin-top: -5vh;
+    right: 10%;
+    font-size: 4vh;
+    color: pink;
+    }
+  }
+
+  .actions{
+    padding: 8px;
+  }
+
+  h1{
+    font-size: 3vh;
+    margin-top: 1vh;
+  }
+
+  .textArea{
+    background-color: #4791B2;
+    margin: 10px;
+    padding: 16px;
+    border-radius:2px;
+    font-size: 3vh;
+    color: white;
   }
 }
 
 .literaryTrailCardContainer{
   width: 100%;
   height: 75%;
-  top: 15%;
+  top: $top;
   position: absolute;
   overflow-y: scroll;
 }
 
 .literaryTrailCard{
   background-color: #4791B2;
-  margin: 10px;
+  margin: 30px;
   border-radius:2px;
+  height: 20vh;
   .moreTrailDetailsContainer{
     height: 0;
     visibility: hidden;
   }
 }
 
+.trailDetails{
+  margin-left: 30px;
+  padding: 20px;
+  color: white;
+
+  h1{
+    margin-top: 20px;
+    font-size:3.5vh;
+  }
+
+  h2{
+    margin-top: 20px;
+    font-size:2.5vh;
+  }
+
+  p{
+    font-size: 2.5vh;
+  }
+  .fa{
+    color:pink;
+    right: 10%;
+    margin-top: -10%;
+    font-size: 3vh;
+    position: absolute;
+    height: inherit;
+  }
+}
+
 .literaryTrailCardExpanded{
   background-color: #4791B2;
-  margin: 10px;
+  margin: 30px;
   border-radius:2px;
-
 
   .moreTrailDetailsContainer{
     background-color: #4791B2;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: -12px;
+    margin-left: 30px;
+    margin-top: 20px;
     border-radius: 2px;
   }
 
   .moreTrailDetails{
-    padding-left: 16px;
-    padding-top: 8px;
-    font-size:2vh;
+    font-size:2.5vh;
     .flatbutton{
       color: pink;
+      margin-top: 40px;
+      margin-bottom: 40px;
     }
     b{
       text-transform: uppercase;
@@ -66,60 +186,47 @@
   }
 }
 
-.trailDetails{
-  margin-left: 10px;
-  padding: 16px;
-  color: white;
-  h1{
-    font-size:3vh;
-  }
-  h2{
-    font-size:2vh;
-  }
-  p{
+.appBarLiteraryTrail{
+  background-color: #47A2CC;
+  position: fixed;
+  height: $top;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0px 2px 10px -1px #212121;
+
+  .title{
+    top: 40%;
     font-size: 2vh;
+    position: relative;
   }
-  .fa{
-    color:pink;
-    right: 10%;
-    margin-top: -15%;
-    position: absolute;
-  }
+}
+
+.mapTrail{
+  height: $top;
 }
 
 #map-icon{
-  right: 12px;
+  right: 2vh;
+  top: 20px;
+  font-size: 3vh;
   position: fixed;
+  height: inherit;
+
 }
 
 #chevron-left-icon{
-  left: 12px;
+  left:  2vh;
   position: fixed;
-}
-
-#map-marker{
-  position: static;
-  margin-top: 0px;
-}
-
-#play-circle{
-  position: absolute;
-  margin-top: -60px;
-  right:30px;
-  font-size: xx-large;
-  color: pink;
-}
-
-#book{
-  position: absolute;
-  margin-top: -60px;
-  right:70px;
-  font-size: xx-large;
-  color: pink;
+  height: inherit;
+  font-size: 3vh;
+  top:20px;
 }
 
 #address{
+  height: inherit;
   position: static;
-  margin-left: 15px;
-  margin-top: -40px;
+  margin-left: 2.5vh;
+  font-size: 2.5vh;
+  margin-top: -55px;
 }
