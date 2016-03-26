@@ -1,4 +1,4 @@
-const {Router, Route, Rederict} = ReactRouter;
+const {Router, Route, Redirect} = ReactRouter;
 
 const history = ReactRouter.history.useQueries(ReactRouter.history.createHistory)();
 
@@ -12,12 +12,12 @@ if (Meteor.isClient) {
 	  	let AppRoutes = (
 	    <Router history= {history}>
 	      <Route component={App}>
-					<Router component={LiteraryTrail} path="literaryTrail/:id" onEnter={requireAuth}/>
-					<Router component={LiteraryTrails} path="literaryTrails" onEnter={requireAuth}/>
-					<Router component={Map} path="/" onEnter={requireAuth} />
-	        		<Router component={AccountsUIWrapper} path="login" />
-					<Router component={Profile} path="profile" onEnter={requireAuth} />
-					<Router component={LiteraryTrailMap} path="literaryTrail/map/:id" onEnter={requireAuth} />
+					<Route component={LiteraryTrail} path="literaryTrail/:id" onEnter={requireAuth}/>
+					<Route component={LiteraryTrails} path="literaryTrails" onEnter={requireAuth}/>
+					<Route component={Map} path="/" onEnter={requireAuth} />
+	        		<Route component={AccountsUIWrapper} path="login" />
+					<Route component={Profile} path="profile" onEnter={requireAuth} />
+					<Route component={LiteraryTrailMap} path="literaryTrail/map/:id" onEnter={requireAuth} />
 	      </Route>
 	    </Router>
 	  )
