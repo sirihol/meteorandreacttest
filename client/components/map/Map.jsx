@@ -134,8 +134,7 @@ MapPage = React.createClass({
   render(){
     return(
       <div>
-        <div className='appBarTitle'>KART</div>
-        <AppBar />
+        <AppBar pageTitle="Kart" />
         <Map />
         <BottomNav />
       </div>

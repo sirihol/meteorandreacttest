@@ -4,8 +4,7 @@ LiteraryTrails = React.createClass({
   render: function() {
     return (
       <div>
-        <div className='appBarTitle'>LITTERÆRE LØYPER</div>
-        <AppBar />
+        <AppBar pageTitle="Litterære løyper" />
         <div className='literaryTrailCardContainer'>
 
          <LiteraryTrailCard

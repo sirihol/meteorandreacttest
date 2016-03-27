@@ -42,8 +42,7 @@ Map = React.createClass({
     // console.log("Rendrer MobileMap.jsx - nå rendrer() jeg siden");
     return(
       <div>
-        <div className='appBarTitle'>KART</div>
-        <AppBar />
+        <AppBar pageTitle="Kart" />
         <div className="content-wrapper">
           <div id="map" className="mapbox"></div>
         </div>
