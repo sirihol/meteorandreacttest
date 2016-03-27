@@ -3,10 +3,12 @@
 	render() {
 		return (
 		<div>
-      <div className='appBarTitle'>FRANK</div>
-			<AppBar />
-			<ProfileDetails username='Siri Holtnæs' />
-			<TrophyComponent />
+			<AppBar pageTitle="Siri"/>
+        <div className="content">
+          <div className="content-container">
+
+    		  </div>
+    		</div>
 			<BottomNav />
 		</div>
 		);

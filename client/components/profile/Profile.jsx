@@ -12,8 +12,7 @@ Profile = React.createClass({
 	render() {
 		return (
 		<div>
-      <div className='appBarTitle'>MIN PROFIL</div>
-			<AppBar />
+			<AppBar pageTitle="Min profil"/>
 			<ProfileDetails username='Siri Holtnæs' />
 			<TrophyComponent />
 			<BottomNav />

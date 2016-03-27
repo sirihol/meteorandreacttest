@@ -7,7 +7,7 @@ TrophyComponent = React.createClass({
 
 	render() {
 		return (
-		<div className='trophyWrapper'>
+		<div>
 			<TrophyItems showModal={this.props.showModal}/>
 			<Modal showModal={this.state.showModal} />
 		</div>
@@ -92,7 +92,7 @@ Modal = React.createClass({
   	}
 
 		return(
-			<div className='contentWrapper'>
+			<div className='modalWrapper'>
 				<div className='modalActiveDarken' style={modalStyle}>
 					<div className='modalContainer'>
 						<h1>{this.props.trophyName}</h1>

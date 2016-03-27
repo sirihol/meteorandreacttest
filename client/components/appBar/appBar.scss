@@ -3,8 +3,10 @@ $top: 15%;
 
 .topNavigation{
   background-color: #47A2CC;
-  position: fixed;
-  height: $top;
+  position: relative;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
   width: 100%;
   top: 0;
   z-index: 100;
