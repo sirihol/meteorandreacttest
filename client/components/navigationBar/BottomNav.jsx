@@ -15,11 +15,9 @@ BottomNav = React.createClass({
 NavigationButton = React.createClass({
   render(){
     return(
-      <Link to={this.props.linkto}>
-        <div className='navigationButton'>
+      <Link className='navigationButton' to={this.props.linkto}>
             <i className={this.props.iconName}></i>
             <div className='iconLabel'>{this.props.iconLabel}</div>
-          </div>
       </Link>
     );
   }

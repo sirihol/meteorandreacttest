@@ -13,6 +13,7 @@ if (Meteor.isClient) {
 					<Router component={MapPage} path="/" />
 					<Router component={Profile} path="profile" />
 					<Router component={LiteraryTrailMap} path="literaryTrail/:id/map" />
+					<Router component={TestLayout} path="testlayout" />
 	      </Route>
 	    </Router>
 	  )

@@ -15,7 +15,7 @@ Profile = React.createClass({
       <div className='appBarTitle'>MIN PROFIL</div>
 			<AppBar />
 			<ProfileDetails username='Siri Holtnæs' />
-			<TrophyComponent showModal={this.showModal} />
+			<TrophyComponent />
 			<BottomNav />
 		</div>
 		);
