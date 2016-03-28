@@ -13,6 +13,10 @@
   justify-content: space-around;
 }
 
+.btmnav-selected{
+  background-color: darken( lightcoral, 10% ) !important;
+}
+
 .navigationButton{
   display: flex;
   justify-content: center;

@@ -1,5 +1,43 @@
 let firstRun = false;
 
+var map = {};
+var counter = 0;
+var temp = {
+    "type": "FeatureCollection",
+    "features": []
+}
+
+
+var sourceTest = {
+      "type": "geojson",
+      "data": {
+          "type": "FeatureCollection",
+          "features": [{
+              "type": "Feature",
+              "geometry": {
+                  "type": "Point",
+                  "coordinates": [10.387597899413436, 63.436177872401856]
+              },
+              "properties": {
+                  "title": "Mapbox DC",
+                  "marker-symbol": "monument"
+              }
+          }, {
+              "type": "Feature",
+              "geometry": {
+                  "type": "Point",
+                  "coordinates": [10.418454031921414, 63.424430265121174]
+              },
+              "properties": {
+                  "title": "Mapbox SF",
+                  "marker-symbol": "harbor"
+              }
+          }]
+      }
+  }
+
+
+
 Meteor.startup(function() {
   Mapbox.load({
     gl: true
@@ -14,7 +52,7 @@ Meteor.startup(function() {
 Tracker.autorun(function () {
   if (Mapbox.loaded()) {
     // updateMap();
-  var map = updateMapboxGL();
+  updateMapboxGL();
 
   map.on('mousemove', function (e) {
       document.getElementById('debugpanel').innerHTML =
@@ -22,68 +60,64 @@ Tracker.autorun(function () {
       JSON.stringify(e.lngLat);
     });
 
+    map.on('source.change', function(res){
+    })
+
     map.on('click', function(data) {
       var e = data && data.originalEvent;
-      console.log('got click ' + (e ? 'button = ' + e.button : ''));
-      console.log(data);
-      layerTest();
+      let point = createGeoJsonPoint(data.lngLat.lng, data.lngLat.lat, "New point!", counter++);
+      temp.features.push(point);
+      console.log(temp);
+      map.getSource('markers').setData(temp);
     });
+
+    map.on('style.load', function(){
+      map.addSource("markers", sourceTest);
+
+      map.addLayer({
+          "id": "markers",
+          "type": "symbol",
+          "source": "markers",
+          "layout": {
+              "icon-image": "{marker-symbol}-15",
+              "text-field": "{title}",
+              "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+              "text-offset": [0, 0.6],
+              "text-anchor": "top"
+          }
+      });
+    })
   }
 })
 
-function layerTest(){
-  map.addSource("markers", {
-        "type": "geojson",
-        "data": {
-            "type": "FeatureCollection",
-            "features": [{
-                "type": "Feature",
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-77.03238901390978, 38.913188059745586]
-                },
-                "properties": {
-                    "title": "Mapbox DC",
-                    "marker-symbol": "monument"
-                }
-            }, {
-                "type": "Feature",
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-122.414, 37.776]
-                },
-                "properties": {
-                    "title": "Mapbox SF",
-                    "marker-symbol": "harbor"
-                }
-            }]
-        }
-    });
+function createGeoJsonPoint(long, lat, name, symbol){
+  var newFeauture = {
+      "type": "Feature",
+      "geometry": {
+          "type": "Point",
+          "coordinates": [long, lat]
+      },
+      "properties": {
+        "title": name,
+        "marker-size": "medium",
+        "marker-symbol": "rocket"
+      },
+  };
+  return newFeauture;
+  // sourceTest.data.features.push(newFeauture);
 
-    map.addLayer({
-        "id": "markers",
-        "type": "symbol",
-        "source": "markers",
-        "layout": {
-            "icon-image": "{marker-symbol}-15",
-            "text-field": "{title}",
-            "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-            "text-offset": [0, 0.6],
-            "text-anchor": "top"
-        }
-    });
 }
 
 function updateMapboxGL(){
     if(Mapbox.loaded()) {
       mapboxgl.accessToken = Meteor.settings.public.accessToken;
-      var map = new mapboxgl.Map({
+      map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/siriholtnaes/cijj81zhp0078bolxxddj29nq',
         center: [10.395151,63.427502], // starting position
         zoom: 13
       });
-      return map;
+      // return map;
   };
 }
 
@@ -113,20 +147,21 @@ Map = React.createClass({
     )
   },
 
+  // console.log("MobileMap.jsx is mounted - jeg kalles når render() er ferdig");
   componentDidMount(nextProps,nextState){
-    // console.log("MobileMap.jsx is mounted - jeg kalles når render() er ferdig");
-      if(firstRun){
+
+      if(firstRun){         // The first time we have to wait for things to load...
         updateMapboxGL();
       }
       firstRun = true;
   },
 
+  // console.log("MobileMap.jsx willUpdate - jeg skal kalles først");
   componentWillUpdate(nextProps,nextState){
-    // console.log("MobileMap.jsx willUpdate - jeg skal kalles først");
   },
 
+  // console.log("MobileMap.jsx didUpdate - jeg skal kalles sist");
   componentDidUpdate(nextProp, nextState){
-    // console.log("MobileMap.jsx didUpdate - jeg skal kalles sist");
   }
 })
 
