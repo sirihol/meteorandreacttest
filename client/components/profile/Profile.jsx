@@ -6,42 +6,50 @@ Profile = React.createClass({
 		return {
 			trophies: Trophies.find({}).fetch(),
 			// To use collection in HTML: trophies={this.data.trophies}
-			user: Meteor.user()
+			user: Meteor.user(),
 		}
 	},
 
-	getServiceImage(currentUser){
-		console.log("currentUser", currentUser.services[0] === "facebook");
-		if (currentUser.services.facebook) {
-				return currentUser.profile.picture; 
-		}
-		else {
-        return "http://elishaterada.com/wp-content/themes/et/assets/img/elishaterada.jpg";
-    	}
+	getInitialState: function() {
+		return {
+			serviceImage: "null",
+			serviceUsername: "null",
+		};
 	},
 
-	getUserName(currentUser){
-		if(currentUser.services){
-			if (currentUser.services.facebook) {
-				return currentUser.services.facebook.name;
+	componentWillMount() {
+		Meteor.call('getServiceProfileImage', (error, result) => {
+			if (error) {
+				console.log("Error: ", error);
 			}
-		}
-		else{
-			return currentUser.emails[0].address;
-		}
+			else{
+  				this.setState({serviceImage: result});
+			}
+		});
+
+		Meteor.call('getServiceUsername', (error, username) => {
+			if (error) {
+				console.log("Error", error);
+			} else {
+				this.setState({serviceUsername: username});
+			}
+		});
+	},
+
+	handleLogout(){
+		AccountsTemplates.logout();
 	},
 
 	render() {
-//		let currentUserImage  = this.getServiceImage(this.data.user);
 		return (
 		<div>
-      <div className='appBarTitle'>
-      MIN PROFIL
-      <button onClick={AccountsTemplates.logout()}> Logout </button> 
-
-      </div>
+    	  <div className='appBarTitle'>
+      		MIN PROFIL
+      		<button onClick={this.handleLogout}> Logout </button> 
+		</div>
+		
 			<AppBar />
-			<ProfileDetails username={this.data.user.services.facebook.name} profileimage={this.data.user.profile.picture}/>
+			<ProfileDetails username={this.state.serviceUsername} profileimage={this.state.serviceImage}/>
 			<TrophyComponent />
 			<BottomNav />
 		</div>

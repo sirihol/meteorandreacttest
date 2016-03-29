@@ -8,17 +8,33 @@ Accounts.onCreateUser(function(options, user) {
 
 
 Meteor.methods({
-	getServiceProfileImage(currentUser){
-	var user= Meteor.users.findOne(user._id);
-    	if (user.services)
-    	{
+	getServiceProfileImage(){
+	const user = Meteor.user();
+    	if (user.services){
         	if (user.services.facebook){
             	return user.profile.picture;
         	}
+        	if (user.services.password){
+        		return "http://elishaterada.com/wp-content/themes/et/assets/img/elishaterada.jpg";
+        	}
     	}
-    	else
-    	{
-        return "http://elishaterada.com/wp-content/themes/et/assets/img/elishaterada.jpg";
+    	else { 
+    		return "http://elishaterada.com/wp-content/themes/et/assets/img/elishaterada.jpg"; 
     	}
+	}, 
+
+	getServiceUsername(){
+		const user = Meteor.user(); 
+		if(user.services){
+			if (user.services.facebook) {
+				return user.services.facebook.name;
+			}
+			if(user.services.password){
+				return user.emails[0].address;
+			}
+		}
+		else{
+			return "ANONYM BRUKER";
+		}
 	}
 });
