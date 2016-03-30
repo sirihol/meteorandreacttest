@@ -4,9 +4,9 @@ Profile = React.createClass({
 
 	getMeteorData(){
 		return {
-			trophies: Trophies.find({}).fetch(),
-			// To use collection in HTML: trophies={this.data.trophies}
 			user: Meteor.user(),
+			// To use collection in HTML: trophies={this.data.trophies}
+			trophies: Trophies.find({owner: Meteor.userId()}).fetch(),
 		}
 	},
 
@@ -50,7 +50,7 @@ Profile = React.createClass({
 		
 			<AppBar />
 			<ProfileDetails username={this.state.serviceUsername} profileimage={this.state.serviceImage}/>
-			<TrophyComponent />
+			<TrophyComponent trophies={this.data.trophies}/>
 			<BottomNav />
 		</div>
 		);

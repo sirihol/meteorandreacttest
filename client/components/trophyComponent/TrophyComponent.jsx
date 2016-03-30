@@ -1,17 +1,19 @@
 TrophyComponent = React.createClass({
+
+		renderTrophies() { 
+ 	   	
+ 		return this.props.trophies.map((trophy) => {
+ 			return <TrophyItem
+ 						key={trophy._id}
+ 						trophy={trophy} />
+ 		});
+ 	},
+
 	render() {
 		return (
 		<div className='trophyWrapper'>
 			<div className='trophyContainer'>
-				<TrophyItem iconName='fa fa-trophy' iconText='Nybegynner'/>
-				<TrophyItem iconName='fa fa-trophy' iconText='Eventyrlysten'/>
-				<TrophyItem iconName='fa fa-trophy' iconText='Lokal'/>
-				<TrophyItem iconName='fa fa-trophy' iconText='Sosial'/>
-				<TrophyItem iconName='fa fa-trophy' iconText='Etterforsker'/>
-				<TrophyItem iconName='fa fa-trophy' iconText='Poet'/>
-				<TrophyItem iconName='fa fa-trophy' iconText='Sosial'/>
-				<TrophyItem iconName='fa fa-trophy' iconText='Etterforsker'/>
-				<TrophyItem iconName='fa fa-trophy' iconText='Poet'/>
+				{this.renderTrophies()}
 			</div>
 		</div>
 		);
@@ -19,6 +21,11 @@ TrophyComponent = React.createClass({
 })
 
 TrophyItem = React.createClass({
+
+	propTypes: {
+ 		trophy: React.PropTypes.object.isRequired,
+  },
+
 	getInitialState(){
     return{
         showTrophyDescription: false,
@@ -36,15 +43,16 @@ TrophyItem = React.createClass({
 		return(
 			<div className='trophyItem' onClick={this.showDescription}>
 				<div className='trophyIcon'>
-					<i className={this.props.iconName}></i>
+					<i className={this.props.trophy.icon}></i>
 				</div>
-				<p>{this.props.iconText}</p>
+				<p>{this.props.trophy.title}</p>
 			</div>
 		);
 	}
 })
 
 TrophyDescription = React.createClass({
+
 	render(){
 		return(
 			<div className='trophyDescriptionWrapper'>
