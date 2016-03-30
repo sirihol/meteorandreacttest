@@ -79,6 +79,7 @@ let items = [{
 			// 		child={this.toggleModal}/>
 			// </div>
 
+		// Legg merke til den siste "this"-en (uttales dissen) Hvis ikke så skjønner den ikke konteksten?
 		return(
 			<div className='trophyContainer'>
 				{items.map(function(item, i) {

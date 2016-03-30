@@ -2,34 +2,44 @@ const {Link} = ReactRouter;
 
 BottomNav = React.createClass({
 
-    clicked(id){
-      console.log(id + " - Dette ble skrevet ut i BottomNav");
+    clicked(id, name){
+      console.log(`[BottomNav]: Navigating to ${id} (${name})`);
     },
 
-
   render(){
+
+    let data = [{
+      name: "trails",
+      link:'literaryTrails',
+      icon:'fa fa-list',
+      iconLabel:'Løyper',
+      },{
+      name: "map",
+      link:'',
+      icon:'fa fa-map',
+      iconLabel:'Kart',
+      },{
+      name: "profile",
+      link:'profile',
+      icon:'fa fa-user',
+      iconLabel:'Profil',
+    }]
+
+    // Legg merke til den siste "this"-en (uttales dissen) Hvis ikke så skjønner den ikke konteksten?
     return(
       <div className='bottomNavigation'>
-        <NavigationButton
-          id="trails"
-          linkto='literaryTrails'
-          iconName='fa fa-list'
-          iconLabel='Løyper'
-          callParent={this.clicked} />
+        {data.map(function(item, i){
+          return (
+              <NavigationButton
+                key={i}
+                id={item.name}
+                linkto={item.link}
+                iconName={item.icon}
+                iconLabel={item.iconLabel}
+                callback={this.clicked.bind(this, i)}
+              />)
+        }, this)}
 
-        <NavigationButton
-          id="map"
-          linkto='/'
-          iconName='fa fa-map'
-          iconLabel='Kart'
-          callParent={this.clicked}/>
-
-        <NavigationButton
-          id="profile"
-          linkto='profile'
-          iconName='fa fa-user'
-          iconLabel='Profil'
-          callParent={this.clicked} />
       </div>
     );
   }
@@ -43,12 +53,12 @@ NavigationButton = React.createClass({
     },
 
    propTypes: {
-        callParent:   React.PropTypes.func
+        callback:   React.PropTypes.func
     },
 
-    childFunc: function(value) {
-        if (typeof this.props.callParent === 'function') {
-            this.props.callParent(value);
+    emitEvent: function() {
+        if (typeof this.props.callback === 'function') {
+            this.props.callback(this.props.id);
         }
     },
 
@@ -61,7 +71,7 @@ NavigationButton = React.createClass({
 
   render(){
     return(
-      <Link className={'navigationButton ' + (this.state.selected ? 'btmnav-selected':'')} to={this.props.linkto}  onClick={this.childFunc("jeg blir sendt fra: " + this.props.id)}>
+      <Link className={'navigationButton ' + (this.state.selected ? 'btmnav-selected':'')} to={this.props.linkto}  onClick={this.emitEvent}>
             <i className={this.props.iconName}></i>
             <div className='iconLabel'>{this.props.iconLabel}</div>
       </Link>
