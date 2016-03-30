@@ -3,16 +3,33 @@ const {Link} = ReactRouter;
 BottomNav = React.createClass({
 
     clicked(id){
-      console.log("#" + id + "ble trykket");
+      console.log(id + " - Dette ble skrevet ut i BottomNav");
     },
 
 
   render(){
     return(
       <div className='bottomNavigation'>
-        <NavigationButton linkto='literaryTrails' iconName='fa fa-list' iconLabel='Løyper' testFunc={this.clicked}/>
-        <NavigationButton linkto='/' iconName='fa fa-map'  iconLabel='Kart'/>
-        <NavigationButton linkto='profile' iconName='fa fa-user'  iconLabel='Profil' />
+        <NavigationButton
+          id="trails"
+          linkto='literaryTrails'
+          iconName='fa fa-list'
+          iconLabel='Løyper'
+          callParent={this.clicked} />
+
+        <NavigationButton
+          id="map"
+          linkto='/'
+          iconName='fa fa-map'
+          iconLabel='Kart'
+          callParent={this.clicked}/>
+
+        <NavigationButton
+          id="profile"
+          linkto='profile'
+          iconName='fa fa-user'
+          iconLabel='Profil'
+          callParent={this.clicked} />
       </div>
     );
   }
@@ -26,12 +43,12 @@ NavigationButton = React.createClass({
     },
 
    propTypes: {
-        testFunc:   React.PropTypes.func
+        callParent:   React.PropTypes.func
     },
 
-    clicked: function(value) {
-        if (typeof this.props.testFunc === 'function') {
-            this.props.testFunc(value);
+    childFunc: function(value) {
+        if (typeof this.props.callParent === 'function') {
+            this.props.callParent(value);
         }
     },
 
@@ -44,7 +61,7 @@ NavigationButton = React.createClass({
 
   render(){
     return(
-      <Link className={'navigationButton ' + (this.state.selected ? 'btmnav-selected':'')} to={this.props.linkto}  onClick={this.testClick}>
+      <Link className={'navigationButton ' + (this.state.selected ? 'btmnav-selected':'')} to={this.props.linkto}  onClick={this.childFunc("jeg blir sendt fra: " + this.props.id)}>
             <i className={this.props.iconName}></i>
             <div className='iconLabel'>{this.props.iconLabel}</div>
       </Link>

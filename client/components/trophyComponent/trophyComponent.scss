@@ -1,13 +1,3 @@
-
-.trophyWrapper{
-  // top: 40%;
-  // width: 100%;
-  // height: 50%;
-  // position: relative;
-  // overflow-y: scroll;
-
-}
-
 .trophyContainer{
   position: relative;
   display: flex;
@@ -51,6 +41,7 @@
   height: 100%;
   position: relative;
 }
+
 .modalActiveDarken{
   background-color: rgba(25, 52, 64, 0.9);
   width: 100%;
@@ -60,9 +51,9 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  z-index: 150;
   top:0;
 }
+
 .modalContainer{
   width: 60%;
   min-height: 50%;
@@ -74,7 +65,7 @@
     position: absolute;
     color: #4791B2;
     font-size: 4vh;
-    right: 13vh;
-    top: 14vh;
+    right: 12vh;
+    line-height: normal;
   }
 }

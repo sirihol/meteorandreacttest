@@ -1,5 +1,4 @@
 Profile = React.createClass({
-
 	mixins: [ReactMeteorData],
 
 	getMeteorData(){
@@ -15,7 +14,6 @@ Profile = React.createClass({
 			<AppBar pageTitle="Min profil"/>
 			<div className="content-container">
 				<ProfileDetails username='Siri Holtnæs' />
-				<TrophyComponent />
 				<TrophyComponent />
 			</div>
 			<BottomNav />
