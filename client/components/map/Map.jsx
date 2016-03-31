@@ -6,34 +6,111 @@ var positions = {
 }
 
 var sourceTest = {
-      "type": "geojson",
-      "data": {
-          "type": "FeatureCollection",
-          "features": [{
-
-              "type": "Feature",
-              "geometry": {
-                "type": "Point",
-                "coordinates": [10.401319563388824,63.4302711580824]
-              },
-              "properties": {
-                "marker-color": "#f2817f"
-              }
-
-            },{
-
-              "type": "Feature",
-              "geometry": {
-                  "type": "Point",
-                  "coordinates": [10.418454031921414, 63.424430265121174]
-              },
-              "properties": {
-                  "title": "Mapbox SF",
-                  "marker-symbol": "harbor"
-              }
-          }]
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            5.6689453125,
+            60.141504734793386
+          ],
+          [
+            6.96533203125,
+            60.403001945865476
+          ],
+          [
+            4.96533203125,
+            244.40300194586547
+          ]
+        ]
       }
-  }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Intro",
+        "marker-color": "#f2817f",
+        "marker-size": "large",
+        "marker-symbol": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.401319563388824,
+          63.4302711580824
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Drapet",
+        "marker-color": "#f2817f",
+        "marker-size": "large",
+        "marker-symbol": 2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.395378470420837,
+          63.43048830589045
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Doktor Fredriki",
+        "marker-color": "#f2817f",
+        "marker-size": "large",
+        "marker-symbol": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.396558642387388,
+          63.4277252472258
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Domen",
+        "marker-color": "#f2817f",
+        "marker-size": "large",
+        "marker-symbol": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.394973456859589,
+          63.427314904894665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Avslutning",
+        "marker-color": "#f2817f",
+        "marker-size": "large",
+        "marker-symbol": 5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.393431186676024,
+          63.42650740121977
+        ]
+      }
+    }
+  ]
+}
 
 
 
@@ -49,6 +126,14 @@ Tracker.autorun(function () {
 });
 
 function addMarkers(){
+
+  // Get geoJson data from meteor collection...
+
+    if(Mapbox.loaded()){
+      console.log("Adding markers...");
+      // L.mapbox.featureLayer(createGeoJsonPoint("10.401319563388824", "63.4302711580824", "test", "rocket")).addTo(map);
+      L.mapbox.featureLayer(sourceTest).addTo(map);
+    }
 }
 
 function createGeoJsonPoint(long, lat, name, symbol){
@@ -60,18 +145,19 @@ function createGeoJsonPoint(long, lat, name, symbol){
       },
       "properties": {
         "title": name,
-        "marker-size": "medium",
-        "marker-symbol": "rocket"
+        "marker-size": "large",
+        "marker-symbol": ""
       },
   };
   return newFeauture;
-
 }
 
 function updateMap(){
   if(Mapbox.loaded()){
       L.mapbox.accessToken = Meteor.settings.public.accessToken;
-		  map = L.mapbox.map("map", "mapbox.streets");
+		  map = L.mapbox.map("map", "mapbox.streets")
+            .setView([63.427502,10.395151], 16);
+      addMarkers();
   }
 }
 

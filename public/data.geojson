@@ -1,15 +1,106 @@
 {
-  "type": "Feature",
-  "geometry": {
-    "type": "Point",
-    "coordinates": [63,43030355040127, 10,400753617286682]
-  },
-  "properties": {
-    "author": "Jørgen Brekke",
-    "literarypiece": "Doktor Fredrikis kabinett",
-    "year": "2014",
-    "lat":"63,43030355040127",
-    "long":"10,400753617286682",
-    "text":"Bayer lot Ingrid gli ut av armene og ned på sengen. Så bøyde han seg og dro frem kisten fra under sengen og fant pistolen sin. Han ladet den med ferskt krutt. Så stormet han ned trappen. Da han løp forbi kontoret, registrerte han at Torp hadde samlet mennene fra gaten der inne. All fornuft tilsa at han burde ta med seg disse mennene i jakten, men fornuft – fornuft var ikke på noen måte en del av ham lenger. Tankene hans var som stumme skygger. Gud ville ha gått seg vill i Nils Bayers raseri, men én ting var Bayer forvisset om: Gud fantes ikke. Han kom ned til Kongens gate. Han reagerte med frykt på å gå her blant alle disse menneskene, ville gitt alt han hadde, for ensomhet, men likevel gikk han mot torget der kirkegjengerne var flest. "
-  }
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            5.6689453125,
+            60.141504734793386
+          ],
+          [
+            6.96533203125,
+            60.403001945865476
+          ],
+          [
+            4.96533203125,
+            244.40300194586547
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Intro",
+        "marker-color": "#f2817f",
+        "marker-size": "large",
+        "marker-symbol": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.401319563388824,
+          63.4302711580824
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Drapet",
+        "marker-color": "#f2817f",
+        "marker-size": "large",
+        "marker-symbol": 2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.395378470420837,
+          63.43048830589045
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Doktor Fredriki",
+        "marker-color": "#f2817f",
+        "marker-size": "large",
+        "marker-symbol": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.396558642387388,
+          63.4277252472258
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Domen",
+        "marker-color": "#f2817f",
+        "marker-size": "large",
+        "marker-symbol": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.394973456859589,
+          63.427314904894665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Avslutning",
+        "marker-color": "#f2817f",
+        "marker-size": "large",
+        "marker-symbol": 5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.393431186676024,
+          63.42650740121977
+        ]
+      }
+    }
+  ]
 }
