@@ -1,5 +1,4 @@
 Profile = React.createClass({
-
 	mixins: [ReactMeteorData],
 
 	getMeteorData(){
@@ -12,10 +11,11 @@ Profile = React.createClass({
 	render() {
 		return (
 		<div>
-      <div className='appBarTitle'>MIN PROFIL</div>
-			<AppBar />
-			<ProfileDetails username='Bruker Brukernavn' />
-			<TrophyComponent />
+			<AppBar pageTitle="Min profil"/>
+			<div className="content-container">
+				<ProfileDetails username='Siri Holtnæs' />
+				<TrophyComponent />
+			</div>
 			<BottomNav />
 		</div>
 		);
@@ -27,9 +27,9 @@ ProfileDetails = React.createClass({
 		return(
 			<div className='profileDetailsContainer'>
 				<div className='user'>
-					<img className='user' alt="profile-pic" src="http://elishaterada.com/wp-content/themes/et/assets/img/elishaterada.jpg" />
+					<img className='user' alt='profile-pic' src='/resources/profilepic.jpg'/>
 				</div>
-				{this.props.username}
+				<div className='userName'>{this.props.username}</div>
 			</div>
 		);
 	}

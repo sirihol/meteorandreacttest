@@ -10,14 +10,14 @@
 
 .profileDetailsContainer{
   width: 100%;
-  height: 25%;
-  top: 15%;
-  position: absolute;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .user{
@@ -28,4 +28,8 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+}
+
+.userName{
+  font-size: 3vh;
 }
