@@ -1,6 +1,7 @@
 TrophyComponent = React.createClass({
 
 	getInitialState(){
+
     return{
         showModalState: false
       }
@@ -24,7 +25,7 @@ TrophyComponent = React.createClass({
 	render() {
 		return (
 		<div>
-			<TrophyItems showModal={this.props.showModal}/>
+			<TrophyItems showModal={this.props.showModal} trophies={this.props.trophies}/>
 			<Modal showModalState={this.props.showModalState} />
 		</div>
 		);
@@ -90,9 +91,10 @@ let items = [{
 			// </div>
 
 		// Legg merke til den siste "this"-en (uttales dissen) Hvis ikke så skjønner den ikke konteksten?
+
 		return(
 			<div className='trophyContainer'>
-				{this.props.trophies.map(function(item, i) {
+				{this.props.trophies.map(function(trophy, i) {
 	        	    return (
 							<TrophyItem
 							key={trophy._id}
@@ -119,7 +121,7 @@ TrophyItem = React.createClass({
 
 	test: function(){
     if (typeof this.props.child === 'function') {
-        this.props.child(this.props.trophyName);
+        this.props.child(this.props.trophy.title);
 		}
 	},
 
