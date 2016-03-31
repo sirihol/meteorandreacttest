@@ -12,7 +12,7 @@ if (Meteor.isClient) {
 	  	let AppRoutes = (
 	    <Router history= {history}>
 	      <Route component={App}>
-					<Router component={MapPage} path="/" onEnter={requireAuth}/>
+					<Router component={MapPage} path="/" />
 					<Route component={LiteraryTrail} path="literaryTrail/:id" onEnter={requireAuth}/>
 					<Route component={LiteraryTrails} path="literaryTrails" onEnter={requireAuth}/>
 
