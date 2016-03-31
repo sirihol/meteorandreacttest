@@ -46,7 +46,7 @@ Tracker.autorun(function () {
   if (Mapbox.loaded()) {
     updateMap();
   }
-})
+});
 
 function addMarkers(){
 }
@@ -84,6 +84,7 @@ function test(){
 }
 
 Map = React.createClass({
+
   render() {
     // console.log("Rendrer MobileMap.jsx - nå rendrer() jeg siden");
     return(
