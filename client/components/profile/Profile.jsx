@@ -42,10 +42,10 @@ Profile = React.createClass({
 	render() {
 		return (
 		<div>
-      		<button onClick={this.handleLogout}> Logout </button> 
 
 			<AppBar pageTitle="Min profil"/>
 			<div className="content-container">
+      			<button onClick={this.handleLogout}> Logout </button> 
 				<ProfileDetails username={this.state.serviceUsername} profileimage={this.state.serviceImage}/>
 				<TrophyComponent trophies={this.data.trophies}/>
 			</div>

@@ -44,44 +44,6 @@ TrophyItems = React.createClass({
 
 	render(){
 
-let items = [{
-        icon: 'fa fa-check',
-        name: 'Nybegynner',
-        desc: 'Lastet ned appen.'
-    }, {
-        icon: 'fa fa-fort-awesome',
-        name: 'Eventyrlysten',
-        desc: 'Gått en eventyrløype.'
-    }, {
-        icon: 'fa fa-flag',
-        name: 'Lokal',
-        desc: 'Gått tre løyper i samme område'
-    }, {
-        icon: 'fa fa-users',
-        name: 'Sosial',
-        desc: 'Delt på facebook tre ganger.'
-    }, {
-        icon: 'fa fa-search',
-        name: 'Etterforsker',
-        desc: 'Gjennomført en krimløype.'
-    }, {
-        icon: 'fa fa-facebook-square',
-        name: 'Facebook',
-        desc: 'Delt på facebook.'
-    }, {
-        icon: 'fa fa-thumbs-up',
-        name: 'Aktiv',
-        desc: 'Gått tre løyper.'
-    }, {
-        icon: 'fa fa-heart',
-        name: 'Poet',
-        desc: 'Gjennomført en poesiløype.'
-    }, {
-        icon: 'fa fa-play-circle',
-        name: 'God lytter',
-        desc: 'Lyttet til fem tekster.'
-    }]
-
 			// <div className='trophyContainer'>
 			// 	<TrophyItem
 			// 		trophyIcon='fa fa-check'

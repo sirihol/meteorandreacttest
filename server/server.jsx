@@ -46,27 +46,48 @@ Meteor.methods({
 		const trophies =[{
 						title: "Nybegynner",
 						icon : "fa fa-check",
-						owner: newUser },
+						desc: 'Lastet ned appen.',
+						owner: newUser},
 
 						{title: "Eventyrlysten",
 						icon : "fa fa-fort-awesome",
+						desc: 'Gått en eventyrløype.',
+						owner: newUser },
+
+						{title: "Lokal",
+						icon : "fa fa-flag",
+						desc: 'Gått tre løyper i samme område',
 						owner: newUser },
 
 						{title: "Sosial",
 						icon : "fa fa-users",
+						desc: 'Delt på facebook tre ganger.',
 						owner: newUser },
 
 						{title: "Etterforsker",
 						icon : "fa fa-search",
+						desc: 'Gjennomført en krimløype.',
 						owner: newUser },
 
 						{title : "Facebook",
 						icon : "fa fa-facebook-square",
+						desc: 'Delt på facebook.',
 						owner : newUser },
 
 						{title: "Aktiv",
 						icon : "fa fa-thumbs-up",
-						owner: newUser }
+						desc: 'Gått tre løyper.',
+						owner: newUser },
+
+						{title: "Poet",
+						icon : "fa fa-heart",
+						desc: 'Gjennomført en poesiløype.',
+						owner: newUser },
+
+						{title: "God lytter",
+						icon : "fa fa-play-circle",
+						desc: 'Lyttet til fem tekster',
+						owner: newUser },
 						];
 
 		for (var index in trophies) {
@@ -77,7 +98,7 @@ Meteor.methods({
 				owner: trophy.owner, //_id of logged in user
 				createdAt: new Date(),
 			});
-			console.log("SERVER: trophy inserted")
+			console.log("SERVER: trophy inserted", index)
 		}
 	},
 
