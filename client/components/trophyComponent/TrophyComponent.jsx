@@ -1,4 +1,5 @@
 TrophyComponent = React.createClass({
+
 	getInitialState(){
     return{
         showModalState: false
@@ -10,6 +11,15 @@ TrophyComponent = React.createClass({
 			showModalState: true
 		});
 	},
+
+	renderTrophies() { 
+	   	
+ 		return this.props.trophies.map((trophy) => {
+ 			return <TrophyItem
+ 						key={trophy._id}
+ 						trophy={trophy} />
+ 		});
+ 	},
 
 	render() {
 		return (
@@ -82,15 +92,13 @@ let items = [{
 		// Legg merke til den siste "this"-en (uttales dissen) Hvis ikke så skjønner den ikke konteksten?
 		return(
 			<div className='trophyContainer'>
-				{items.map(function(item, i) {
-            return (
+				{this.props.trophies.map(function(item, i) {
+	        	    return (
 							<TrophyItem
-							key={i}
-							trophyIcon={item.icon}
-							trophyName={item.name}
-							trophyDescription={item.desc}
+							key={trophy._id}
+	 						trophy={trophy}
 							child={this.toggleModal.bind(this, i)}/>)
-          }, this)}
+    		    	  }, this)}
 			</div>
 		);
 	}
@@ -98,9 +106,16 @@ let items = [{
 
 TrophyItem = React.createClass({
 
-	 propTypes: {
-	      child:   React.PropTypes.func
-	  },
+	propTypes: {
+ 		trophy: React.PropTypes.object.isRequired,
+    	child:   React.PropTypes.func
+  },
+
+	getInitialState(){
+    return{
+        showTrophyDescription: false,
+      }
+  },
 
 	test: function(){
     if (typeof this.props.child === 'function') {
@@ -108,26 +123,26 @@ TrophyItem = React.createClass({
 		}
 	},
 
-
 	render(){
 		return(
 			<div className='trophyItem' onClick={this.test} >
 				<div className='trophyIcon'>
-					<i className={this.props.trophyIcon}></i>
+					<i className={this.props.trophy.icon}></i>
 				</div>
-				<div className='trophyName'>{this.props.trophyName}</div>
+				<div className='trophyName'>{this.props.trophy.title}</div>
 			</div>
 		);
 	}
 })
 
 Modal = React.createClass({
+
 	render(){
 		let modalStyle = {
 			visibility: 'hidden'
 		}
 
-		if (this.props.showModalState) {
+	if (this.props.showModalState) {
       modalStyle.visibility =  "visible"
     }
 

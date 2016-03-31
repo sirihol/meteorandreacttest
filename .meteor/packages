@@ -26,7 +26,6 @@ fortawesome:fontawesome
 react-template-helper
 cosmos:browserify@=0.9.4
 planettraining:material-design-icons-font
-tmikeladze:react-swipeable-views
 
 accounts-password
 accounts-facebook
@@ -38,3 +37,6 @@ pauloborges:mapbox
 
 standard-minifier-css
 standard-minifier-js
+
+aldeed:template-extension
+gwendall:blaze-to-react
