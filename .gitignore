@@ -2,6 +2,8 @@
 settings.json
 rick.mp3
 
+#Social integration
+social-config.js
 
 # Created by https://www.gitignore.io/api/osx,meteorjs
 
@@ -46,8 +48,6 @@ settings.json
 # general swp files from vim
 *.swp
 
-#Social integration
-social-config.js
 
 
 
