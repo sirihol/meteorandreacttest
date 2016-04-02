@@ -2,10 +2,10 @@ Profile = React.createClass({
 	mixins: [ReactMeteorData],
 
 	getMeteorData(){
+		let handle =  Meteor.subscribe("trophies");
 		return {
-			user: Meteor.user(),
 			// To use collection in HTML: trophies={this.data.trophies}
-			trophies: Trophies.find({owner: Meteor.userId()}).fetch(),
+			trophies: Trophies.find().fetch(),
 		}
 	},
 
@@ -45,7 +45,7 @@ Profile = React.createClass({
 
 			<AppBar pageTitle="Min profil"/>
 			<div className="content-container">
-      			<button onClick={this.handleLogout}> Logout </button> 
+      			<button onClick={this.handleLogout}> Logout </button>
 				<ProfileDetails username={this.state.serviceUsername} profileimage={this.state.serviceImage}/>
 				<TrophyComponent trophies={this.data.trophies}/>
 			</div>

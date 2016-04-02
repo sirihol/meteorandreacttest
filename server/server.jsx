@@ -14,8 +14,11 @@ if(Meteor.isServer){
     addGeoJsonMarkers();
   }
   Meteor.publish('trailsjson', function() {
-  return LitteraryTrailsGeoJSON.find();
-})
+    return LitteraryTrailsGeoJSON.find();
+  })
+  Meteor.publish('trophies', function() {
+    return Trophies.find({owner: this.userId});
+  })
 }
 
 //Adding GEOJSON - markers to the collection: LitteraryTrailsGeoJSON
@@ -129,11 +132,11 @@ function addGeoJsonMarkers() {
 
   for(index in sourceTest.features){
     var feature = sourceTest.features[index];
-      LitteraryTrailsGeoJSON.insert({
-        type: feature.type,
-        geometry: feature.geometry,
-        properties: feature.properties //_id of logged in user
-      });
+    LitteraryTrailsGeoJSON.insert({
+      type: feature.type,
+      geometry: feature.geometry,
+      properties: feature.properties //_id of logged in user
+    });
     //console.log("SERVER - feature added", feature);
   }
 
@@ -183,56 +186,56 @@ Meteor.methods({
       owner: newUser},
 
       {title: "Eventyrlysten",
-      icon : "fa fa-fort-awesome",
-      desc: 'Gått en eventyrløype.',
-      owner: newUser },
+        icon : "fa fa-fort-awesome",
+        desc: 'Gått en eventyrløype.',
+        owner: newUser },
 
-      {title: "Lokal",
-      icon : "fa fa-flag",
-      desc: 'Gått tre løyper i samme område',
-      owner: newUser },
+        {title: "Lokal",
+          icon : "fa fa-flag",
+          desc: 'Gått tre løyper i samme område',
+          owner: newUser },
 
-      {title: "Sosial",
-      icon : "fa fa-users",
-      desc: 'Delt på facebook tre ganger.',
-      owner: newUser },
+          {title: "Sosial",
+            icon : "fa fa-users",
+            desc: 'Delt på facebook tre ganger.',
+            owner: newUser },
 
-      {title: "Etterforsker",
-      icon : "fa fa-search",
-      desc: 'Gjennomført en krimløype.',
-      owner: newUser },
+            {title: "Etterforsker",
+              icon : "fa fa-search",
+              desc: 'Gjennomført en krimløype.',
+              owner: newUser },
 
-      {title : "Facebook",
-      icon : "fa fa-facebook-square",
-      desc: 'Delt på facebook.',
-      owner : newUser },
+              {title : "Facebook",
+                icon : "fa fa-facebook-square",
+                desc: 'Delt på facebook.',
+                owner : newUser },
 
-      {title: "Aktiv",
-      icon : "fa fa-thumbs-up",
-      desc: 'Gått tre løyper.',
-      owner: newUser },
+                {title: "Aktiv",
+                  icon : "fa fa-thumbs-up",
+                  desc: 'Gått tre løyper.',
+                  owner: newUser },
 
-      {title: "Poet",
-      icon : "fa fa-heart",
-      desc: 'Gjennomført en poesiløype.',
-      owner: newUser },
+                  {title: "Poet",
+                    icon : "fa fa-heart",
+                    desc: 'Gjennomført en poesiløype.',
+                    owner: newUser },
 
-      {title: "God lytter",
-      icon : "fa fa-play-circle",
-      desc: 'Lyttet til fem tekster',
-      owner: newUser },
-    ];
+                    {title: "God lytter",
+                      icon : "fa fa-play-circle",
+                      desc: 'Lyttet til fem tekster',
+                      owner: newUser },
+                    ];
 
-    for (var index in trophies) {
-      let trophy = trophies[index];
-      Trophies.insert({
-        title: trophy.title,
-        icon: trophy.icon,
-        owner: trophy.owner, //_id of logged in user
-        createdAt: new Date(),
-      });
-      console.log("SERVER: trophy inserted", index)
-    }
-  },
+                    for (var index in trophies) {
+                      let trophy = trophies[index];
+                      Trophies.insert({
+                        title: trophy.title,
+                        icon: trophy.icon,
+                        owner: trophy.owner, //_id of logged in user
+                        createdAt: new Date(),
+                      });
+                      console.log("SERVER: trophy inserted", index)
+                    }
+                  },
 
-});
+                });
