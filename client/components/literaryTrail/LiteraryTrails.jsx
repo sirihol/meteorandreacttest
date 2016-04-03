@@ -1,3 +1,5 @@
+import ReactPlayer from 'react-player'
+
 const {Link} = ReactRouter;
 
 LiteraryTrails = React.createClass({
@@ -113,14 +115,71 @@ LiteraryPlace = React.createClass({
   getInitialState(){
     return{
         playTrack: false,
-        showText: false
+        showText: false,
+
+        //States for the audioplayer
+        //url: 'https://raw.githubusercontent.com/scottschiller/SoundManager2/master/demo/_mp3/rain.mp3',
+        url: '/resources/jawani.mp3',
+        playing: false,
+        volume: 0.7,
+        played: 0,
+        loaded: 0
       }
   },
+
+  //Functions for audioplayer
+  load(url) {
+    this.setState({url, played: 0, loaded: 0 });
+  },
+  playPause() {
+    this.setState({ playing: !this.state.playing });
+  },
+  stop() {
+    this.setState({ url: null, playing: false });
+  },
+  setVolume(e) {
+    this.setState({ volume: parseFloat(e.target.value) });
+  },
+  onSeekMouseDown(e) {
+    this.setState({ seeking: true });
+  },
+  onSeekChange(e) {
+    this.setState({ played: parseFloat(e.target.value) });
+  },
+  onSeekMouseUp(e) {
+    this.setState({ seeking: false })
+    this.refs.player.seekTo(parseFloat(e.target.value));
+  },
+  onProgress(state) {
+    // We only want to update time slider if we are not currently seeking
+    if (!this.state.seeking) {
+      this.setState(state);
+    }
+  },
+  onConfigSubmit() {
+    let config;
+    try {
+      config = JSON.parse(this.refs.config.value);
+    } catch (error) {
+      config = {};
+      console.error('Error setting config:', error);
+    }
+    this.setState(config);
+  },
+  renderLoadButton(url, label) {
+    return (
+      <button onClick={() => this.load(url)}>
+        {label}
+      </button>
+    )
+  },
+  //End functions for audioplayer
 
   togglePlay(){
     this.setState({
         playTrack: !this.state.playTrack
       });
+    this.playPause();
   },
 
   toggleShowText(){
@@ -130,6 +189,13 @@ LiteraryPlace = React.createClass({
   },
 
   render:function(){
+    const {
+      url, playing, volume,
+      played, loaded,
+    } = this.state;
+
+    console.log("STATES: url: ", url, "playing: ", playing, "volume: ", volume, "played: ", played, "loaded: ", loaded);
+
     return(
       <div className={this.state.showText ? 'literaryPlaceCardExpanded' : 'literaryPlaceCard'}>
         <div className='primarytext'>
@@ -143,6 +209,23 @@ LiteraryPlace = React.createClass({
             </div>
 
             <div className='buttonAndText'>
+              <div className="none" style={{display: 'none'}}>
+                <ReactPlayer
+                  ref='player'
+                  className='react-player'
+                  //width={480}
+                  //height={270}
+                  url={url}
+                  playing={playing}
+                  volume={volume}
+                  onPlay={() => this.setState({ playing: true })}
+                  onPause={() => this.setState({ playing: false })}
+                  onBuffer={() => console.log('onBuffer')}
+                  onEnded={() => this.setState({ playing: false })}
+                  onError={(e) => console.log('onError', e)}
+                  onProgress={this.onProgress}
+                />
+              </div>
               <i className={this.state.playTrack ? 'fa fa-pause-circle-o playCircle' : 'fa fa-play-circle-o playCircle'} onClick={this.togglePlay}></i>
               <p>Lytt</p>
             </div>
