@@ -3,7 +3,7 @@ Login = React.createClass({
 		return(
 			<div className="login-container">
 				<AppBar pageTitle='Velkommen' />
-				<div className='content-container'>
+				<div className='login-wrapper'>
 					<AccountsUIWrapper/>
 				</div>
 			</div>

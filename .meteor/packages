@@ -29,10 +29,7 @@ planettraining:material-design-icons-font
 
 accounts-password
 accounts-facebook
-useraccounts:bootstrap
 service-configuration
-accounts-ui
-useraccounts:unstyled
 pauloborges:mapbox
 
 standard-minifier-css
@@ -40,3 +37,4 @@ standard-minifier-js
 
 aldeed:template-extension
 gwendall:blaze-to-react
+useraccounts:unstyled

@@ -6,28 +6,33 @@ html{
     background-color: #4791B2;
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 3% 7%;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: inherit;
-    width: 50%;
     margin: 10px;
+    border-radius: 4px;
 }
 
-.login-container{
-  background-color: pink;
-  height: 100vh;
+*{
+  box-sizing: border-box;
+}
+
+
+.login-wrapper{
+    height: 100vh;
+    padding-top: 13vh;
+    background-color: lighten(#4791B2, 50%);
 }
 
 .at-form {
-  height: 100vh;
-  width: 100%;
   float: none;
   margin: auto;
-  overflow: auto;
+  overflow: hidden;
   border-radius: 10px;
   padding: 15px;
+  height: 100%;
 }
 
 .at-form p {
@@ -49,11 +54,6 @@ html{
 }
 
 .at-signin-link {
-  margin-top: 20px;
-  margin-bottom: 30px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
 
 }
 
@@ -67,29 +67,29 @@ html{
 }
 
 button.at-social-btn {
-  display: block;
-  width: 50%;
-  font-size: 50%;
+  font-size: .8em;
+  padding: 3% 7%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 3vh;
-  margin-bottom: 3vh;
+  align-items: baseline;
 }
 
 button.at-social-btn i {
-  float: left;
-  width: 40px;
-  font-size: 20px;
-  margin-top: 1px;
-  padding-right: 15px;
-  padding-left: 5px;
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 1em;
+  padding: 5px 0;
+  margin-right: 30px;
+  line-height: 0;
+}
+
+.at-input.has-feedback{
+  margin-bottom: 1em;
 }
 
 button.at-social-btn#at-facebook {
   background: #3B5998;
   color: #fff;
+  margin: 1em auto;
+  border-radius: 4px;
+  border: none;
 }
 
 button.at-social-btn#at-facebook.disabled {
@@ -126,24 +126,29 @@ button.at-social-btn#at-facebook:hover {
 .at-pwd-form > form {
   margin-top: 5vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  flex-wrap: wrap;
+  align-items: center;
 }
 
 .at-pwd-form > form label {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   margin-bottom: 5px;
-  font-weight: 500;
+  font-weight: 300;
   font-size: inherit;
 }
 
+.at-pwd-form > form input{
+  padding: 4% 4%;
+  border-radius: 2%;
+  border: 1px solid #ddd;
+  font-weight: 200;
+  background-color: #fff;
+}
+
 .at-signup-link {
-  margin-top: 20px;
-  margin-bottom: 30px;
-  display: flex;
-  justify-content: center;
-  font-size: inherit;
+  margin-top: 1em;
 }
 .at-terms-link {
   display: flex;
@@ -164,9 +169,11 @@ button.at-social-btn#at-facebook:hover {
 }
 
 #at-btn{
-  width: 50%;
   font-size: inherit;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-bottom: 2em;
+}
+
+
+.at-terms-link.at-wrap{
+  display: none;
 }

@@ -16,16 +16,16 @@ Meteor.methods({
             	return user.profile.picture;
         	}
         	if (user.services.password){
-        		return "http://elishaterada.com/wp-content/themes/et/assets/img/elishaterada.jpg";
+        		return "resources/profile.png";
         	}
     	}
-    	else { 
-    		return "http://elishaterada.com/wp-content/themes/et/assets/img/elishaterada.jpg"; 
+    	else {
+    		return "resources/profile.png";
     	}
-	}, 
+	},
 
 	getServiceUsername(){
-		const user = Meteor.user(); 
+		const user = Meteor.user();
 		if(user.services){
 			if (user.services.facebook) {
 				return user.services.facebook.name;
