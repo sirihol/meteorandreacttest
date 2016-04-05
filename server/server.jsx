@@ -183,6 +183,7 @@ Meteor.methods({
           title: "Nybegynner",
           icon: "fa fa-check",
           desc: 'Lastet ned appen.',
+          activeTrophy: false,
           owner: newUser
       },
 
@@ -190,6 +191,7 @@ Meteor.methods({
           title: "Eventyrlysten",
           icon: "fa fa-fort-awesome",
           desc: 'Gått en eventyrløype.',
+          activeTrophy: false,
           owner: newUser
       },
 
@@ -197,6 +199,7 @@ Meteor.methods({
           title: "Lokal",
           icon: "fa fa-flag",
           desc: 'Gått tre løyper i samme område',
+          activeTrophy: false,
           owner: newUser
       },
 
@@ -204,6 +207,7 @@ Meteor.methods({
           title: "Sosial",
           icon: "fa fa-users",
           desc: 'Delt på facebook tre ganger.',
+          activeTrophy: false,
           owner: newUser
       },
 
@@ -211,6 +215,7 @@ Meteor.methods({
           title: "Etterforsker",
           icon: "fa fa-search",
           desc: 'Gjennomført en krimløype.',
+          activeTrophy: false,
           owner: newUser
       },
 
@@ -218,6 +223,7 @@ Meteor.methods({
           title: "Facebook",
           icon: "fa fa-facebook-square",
           desc: 'Delt på facebook.',
+          activeTrophy: false,
           owner: newUser
       },
 
@@ -225,6 +231,7 @@ Meteor.methods({
           title: "Aktiv",
           icon: "fa fa-thumbs-up",
           desc: 'Gått tre løyper.',
+          activeTrophy: false,
           owner: newUser
       },
 
@@ -232,6 +239,7 @@ Meteor.methods({
           title: "Poet",
           icon: "fa fa-heart",
           desc: 'Gjennomført en poesiløype.',
+          activeTrophy: false,
           owner: newUser
       },
 
@@ -239,6 +247,7 @@ Meteor.methods({
           title: "God lytter",
           icon: "fa fa-play-circle",
           desc: 'Lyttet til fem tekster',
+          activeTrophy: false,
           owner: newUser
       },
   ];
@@ -247,6 +256,8 @@ Meteor.methods({
       Trophies.insert({
         title: trophy.title,
         icon: trophy.icon,
+        desc: trophy.desc,
+        activeTrophy: trophy.activeTrophy,
         owner: trophy.owner, //_id of logged in user
         createdAt: new Date(),
       });
