@@ -17,11 +17,26 @@
   margin-bottom: 10px;
 }
 
-.trophyIcon{
+.activeTrophyIcon{
   width: 10vh;
   height: 10vh;
   border-radius: 50%;
   background-color: pink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .fa{
+    color: white;
+    font-size: 5vh;
+  }
+}
+
+.inactiveTrophyIcon{
+  width: 10vh;
+  height: 10vh;
+  border-radius: 50%;
+  background-color: #C8C6C6;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,15 +67,17 @@
   align-items: center;
   position: absolute;
   top:0;
+  z-index: 1;
 }
 
 .modalContainer{
+  pointer-events: all;
   width: 60%;
   min-height: 50%;
   background-color: white;
   border-radius: 2px;
   box-shadow: 5px 8px 10px 0px #565656;
-
+  z-index: 1;
   .closeModal{
     position: absolute;
     color: #4791B2;

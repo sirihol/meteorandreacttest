@@ -1,32 +1,34 @@
 TrophyComponent = React.createClass({
 
 	getInitialState(){
-
     return{
-        showModalState: false
+        showModalState: false,
+				title: "null",
+				desc: "null",
       }
   },
 
-	showModal(){
+	showModal(title, desc){
 		this.setState({
-			showModalState: true
+			showModalState: true,
+			title: title,
+			desc: desc
 		});
 	},
 
-	renderTrophies() { 
-	   	
- 		return this.props.trophies.map((trophy) => {
- 			return <TrophyItem
- 						key={trophy._id}
- 						trophy={trophy} />
- 		});
+	hideModal(e) {
+		//e.preventDefault();
+    this.setState({
+      showModalState: false
+    });
  	},
 
 	render() {
+		let { showModalState, title, desc} = this.state;
 		return (
 		<div>
-			<TrophyItems showModal={this.props.showModal} trophies={this.props.trophies}/>
-			<Modal showModalState={this.props.showModalState} />
+			<TrophyItems showModal={this.showModal} trophies={this.props.trophies}/>
+			<Modal showModalState={showModalState} title={title} desc={desc} hideModal={this.hideModal}/>
 		</div>
 		);
 	}
@@ -39,20 +41,10 @@ TrophyItems = React.createClass({
 	},
 
 	toggleModal(childName, some){
-		console.log("Child's name: "+ some);
+		console.log("TROPHYITEMS-component: Child's name: "+ some);
 	},
 
 	render(){
-
-			// <div className='trophyContainer'>
-			// 	<TrophyItem
-			// 		trophyIcon='fa fa-check'
-			// 		trophyName='Nybegynner'
-			// 		trophyDescription='Lastet ned appen.'
-			// 		child={this.toggleModal}/>
-			// </div>
-
-		// Legg merke til den siste "this"-en (uttales dissen) Hvis ikke så skjønner den ikke konteksten?
 
 		return(
 			<div className='trophyContainer'>
@@ -61,6 +53,7 @@ TrophyItems = React.createClass({
 							<TrophyItem
 							key={trophy._id}
 	 						trophy={trophy}
+							showModal={this.props.showModal}
 							child={this.toggleModal.bind(this, i)}/>)
     		    	  }, this)}
 			</div>
@@ -72,13 +65,7 @@ TrophyItem = React.createClass({
 
 	propTypes: {
  		trophy: React.PropTypes.object.isRequired,
-    	child:   React.PropTypes.func
-  },
-
-	getInitialState(){
-    return{
-        showTrophyDescription: false,
-      }
+    child:  React.PropTypes.func
   },
 
 	test: function(){
@@ -88,12 +75,16 @@ TrophyItem = React.createClass({
 	},
 
 	render(){
+		let {
+    	trophy
+    } = this.props;
+
 		return(
-			<div className='trophyItem' onClick={this.test} >
-				<div className='trophyIcon'>
-					<i className={this.props.trophy.icon}></i>
+			<div className='trophyItem' onClick={this.props.showModal.bind(null, trophy.title, trophy.desc)} >
+				<div className={trophy.activeTrophy ? 'activeTrophyIcon' : 'inactiveTrophyIcon'}>
+					<i className={trophy.icon}></i>
 				</div>
-				<div className='trophyName'>{this.props.trophy.title}</div>
+				<div className='trophyName'>{trophy.title}</div>
 			</div>
 		);
 	}
@@ -103,20 +94,22 @@ Modal = React.createClass({
 
 	render(){
 		let modalStyle = {
-			visibility: 'hidden'
+			visibility: 'hidden',
+			opacity: "0"
 		}
 
-	if (this.props.showModalState) {
-      modalStyle.visibility =  "visible"
+	if (!!this.props.showModalState) {
+      modalStyle.visibility =  "visible",
+			modalStyle.opacity = "1"
     }
 
 		return(
 			<div className='modalWrapper'>
 				<div className='modalActiveDarken' style = {modalStyle}>
 					<div className='modalContainer'>
-						<h1>{this.props.trophyName}</h1>
-						<h2>{this.props.trophyDescription}</h2>
-						<i className='fa fa-close closeModal'></i>
+						<div className="closeModal" onClick={this.props.hideModal}><i className='fa fa-close closeModal'></i></div>
+						<h1>{this.props.title}</h1>
+						<h2>{this.props.desc}</h2>
 					</div>
 				</div>
 			</div>

@@ -152,11 +152,11 @@ Meteor.methods({
         return user.profile.picture;
       }
       if (user.services.password){
-        return "http://elishaterada.com/wp-content/themes/et/assets/img/elishaterada.jpg";
+        return "resources/profile.png";
       }
     }
     else {
-      return "http://elishaterada.com/wp-content/themes/et/assets/img/elishaterada.jpg";
+      return "resources/profile.png";
     }
   },
 
@@ -176,66 +176,92 @@ Meteor.methods({
   },
 
   //When a new user joins WordSpaces, then create initial trophies for the new user
-  createIntialTrophies(user){
-    let newUser = user._id;
-    console.log("SERVER: USER: ", newUser);
-    const trophies =[{
-      title: "Nybegynner",
-      icon : "fa fa-check",
-      desc: 'Lastet ned appen.',
-      owner: newUser},
+    createIntialTrophies(user){
+      let newUser = user._id;
+      console.log("SERVER: USER: ", newUser);
+      const trophies =[{
+          title: "Nybegynner",
+          icon: "fa fa-check",
+          desc: 'Lastet ned appen.',
+          activeTrophy: false,
+          owner: newUser
+      },
 
-      {title: "Eventyrlysten",
-        icon : "fa fa-fort-awesome",
-        desc: 'Gått en eventyrløype.',
-        owner: newUser },
+      {
+          title: "Eventyrlysten",
+          icon: "fa fa-fort-awesome",
+          desc: 'Gått en eventyrløype.',
+          activeTrophy: false,
+          owner: newUser
+      },
 
-        {title: "Lokal",
-          icon : "fa fa-flag",
+      {
+          title: "Lokal",
+          icon: "fa fa-flag",
           desc: 'Gått tre løyper i samme område',
-          owner: newUser },
+          activeTrophy: false,
+          owner: newUser
+      },
 
-          {title: "Sosial",
-            icon : "fa fa-users",
-            desc: 'Delt på facebook tre ganger.',
-            owner: newUser },
+      {
+          title: "Sosial",
+          icon: "fa fa-users",
+          desc: 'Delt på facebook tre ganger.',
+          activeTrophy: false,
+          owner: newUser
+      },
 
-            {title: "Etterforsker",
-              icon : "fa fa-search",
-              desc: 'Gjennomført en krimløype.',
-              owner: newUser },
+      {
+          title: "Etterforsker",
+          icon: "fa fa-search",
+          desc: 'Gjennomført en krimløype.',
+          activeTrophy: false,
+          owner: newUser
+      },
 
-              {title : "Facebook",
-                icon : "fa fa-facebook-square",
-                desc: 'Delt på facebook.',
-                owner : newUser },
+      {
+          title: "Facebook",
+          icon: "fa fa-facebook-square",
+          desc: 'Delt på facebook.',
+          activeTrophy: false,
+          owner: newUser
+      },
 
-                {title: "Aktiv",
-                  icon : "fa fa-thumbs-up",
-                  desc: 'Gått tre løyper.',
-                  owner: newUser },
+      {
+          title: "Aktiv",
+          icon: "fa fa-thumbs-up",
+          desc: 'Gått tre løyper.',
+          activeTrophy: false,
+          owner: newUser
+      },
 
-                  {title: "Poet",
-                    icon : "fa fa-heart",
-                    desc: 'Gjennomført en poesiløype.',
-                    owner: newUser },
+      {
+          title: "Poet",
+          icon: "fa fa-heart",
+          desc: 'Gjennomført en poesiløype.',
+          activeTrophy: false,
+          owner: newUser
+      },
 
-                    {title: "God lytter",
-                      icon : "fa fa-play-circle",
-                      desc: 'Lyttet til fem tekster',
-                      owner: newUser },
-                    ];
-
-                    for (var index in trophies) {
-                      let trophy = trophies[index];
-                      Trophies.insert({
-                        title: trophy.title,
-                        icon: trophy.icon,
-                        owner: trophy.owner, //_id of logged in user
-                        createdAt: new Date(),
-                      });
-                      console.log("SERVER: trophy inserted", index)
-                    }
-                  },
-
-                });
+      {
+          title: "God lytter",
+          icon: "fa fa-play-circle",
+          desc: 'Lyttet til fem tekster',
+          activeTrophy: false,
+          owner: newUser
+      },
+  ];
+    for (var index in trophies) {
+      let trophy = trophies[index];
+      Trophies.insert({
+        title: trophy.title,
+        icon: trophy.icon,
+        desc: trophy.desc,
+        activeTrophy: trophy.activeTrophy,
+        owner: trophy.owner, //_id of logged in user
+        createdAt: new Date(),
+      });
+      console.log("SERVER: trophy inserted", index)
+    }
+  },
+});
