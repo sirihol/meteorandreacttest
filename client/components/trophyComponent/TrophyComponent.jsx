@@ -23,17 +23,6 @@ TrophyComponent = React.createClass({
     });
  	},
 
-/*
-	renderTrophies() {
-
- 		return this.props.trophies.map((trophy) => {
- 			return <TrophyItem
- 						key={trophy._id}
- 						trophy={trophy} />
- 		});
- 	},
-*/
-
 	render() {
 		let { showModalState, title, desc} = this.state;
 		return (
@@ -56,16 +45,6 @@ TrophyItems = React.createClass({
 	},
 
 	render(){
-
-			// <div className='trophyContainer'>
-			// 	<TrophyItem
-			// 		trophyIcon='fa fa-check'
-			// 		trophyName='Nybegynner'
-			// 		trophyDescription='Lastet ned appen.'
-			// 		child={this.toggleModal}/>
-			// </div>
-
-		// Legg merke til den siste "this"-en (uttales dissen) Hvis ikke så skjønner den ikke konteksten?
 
 		return(
 			<div className='trophyContainer'>
