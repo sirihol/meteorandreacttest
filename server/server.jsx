@@ -247,6 +247,7 @@ Meteor.methods({
       Trophies.insert({
         title: trophy.title,
         icon: trophy.icon,
+        desc: trophy.desc,
         owner: trophy.owner, //_id of logged in user
         createdAt: new Date(),
       });
