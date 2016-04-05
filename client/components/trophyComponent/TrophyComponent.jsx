@@ -13,8 +13,8 @@ TrophyComponent = React.createClass({
 		});
 	},
 
-	renderTrophies() { 
-	   	
+	renderTrophies() {
+
  		return this.props.trophies.map((trophy) => {
  			return <TrophyItem
  						key={trophy._id}

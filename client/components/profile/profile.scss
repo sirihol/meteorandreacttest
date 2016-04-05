@@ -33,3 +33,23 @@
 .userName{
   font-size: 3vh;
 }
+
+.logout-button{
+  z-index: 1000;
+  position: absolute;
+  margin-top: -20%;
+  z-index: 100;
+  margin-left: 80%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .fa-sign-out{
+    font-size: 120%;
+    color: white;
+  }
+  p{
+    font-size: 80%;
+    color: white;
+  }
+}

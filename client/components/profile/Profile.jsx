@@ -45,7 +45,12 @@ Profile = React.createClass({
 
 			<AppBar pageTitle="Min profil"/>
 			<div className="content-container">
-      			<button onClick={this.handleLogout}> Logout </button>
+
+				<div className='logout-button' onClick={this.handleLogout}>
+						<i id='signout' className='fa fa-sign-out' ></i>
+						<p>Logg ut</p>
+				</div>
+
 				<ProfileDetails username={this.state.serviceUsername} profileimage={this.state.serviceImage}/>
 				<TrophyComponent trophies={this.data.trophies}/>
 			</div>
