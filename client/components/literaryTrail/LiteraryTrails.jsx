@@ -114,7 +114,6 @@ AppBarLiteraryTrail = React.createClass({
 LiteraryPlace = React.createClass({
   getInitialState(){
     return{
-        playTrack: false,
         showText: false,
 
         //States for the audioplayer
@@ -137,18 +136,18 @@ LiteraryPlace = React.createClass({
   stop() {
     this.setState({ url: null, playing: false });
   },
-  setVolume(e) {
-    this.setState({ volume: parseFloat(e.target.value) });
+  setVolume(event) {
+    this.setState({ volume: parseFloat(event.target.value) });
   },
-  onSeekMouseDown(e) {
+  onSeekMouseDown(event) {
     this.setState({ seeking: true });
   },
-  onSeekChange(e) {
-    this.setState({ played: parseFloat(e.target.value) });
+  onSeekChange(event) {
+    this.setState({ played: parseFloat(event.target.value) });
   },
-  onSeekMouseUp(e) {
+  onSeekMouseUp(event) {
     this.setState({ seeking: false })
-    this.refs.player.seekTo(parseFloat(e.target.value));
+    this.refs.player.seekTo(parseFloat(event.target.value));
   },
   onProgress(state) {
     // We only want to update time slider if we are not currently seeking
@@ -175,13 +174,6 @@ LiteraryPlace = React.createClass({
   },
   //End functions for audioplayer
 
-  togglePlay(){
-    this.setState({
-        playTrack: !this.state.playTrack
-      });
-    this.playPause();
-  },
-
   toggleShowText(){
       this.setState({
         showText: !this.state.showText
@@ -194,7 +186,7 @@ LiteraryPlace = React.createClass({
       played, loaded,
     } = this.state;
 
-    console.log("STATES: url: ", url, "playing: ", playing, "volume: ", volume, "played: ", played, "loaded: ", loaded);
+    //console.log("STATES: url: ", url, "playing: ", playing, "volume: ", volume, "played: ", played, "loaded: ", loaded);
 
     return(
       <div className={this.state.showText ? 'literaryPlaceCardExpanded' : 'literaryPlaceCard'}>
@@ -213,8 +205,6 @@ LiteraryPlace = React.createClass({
                 <ReactPlayer
                   ref='player'
                   className='react-player'
-                  //width={480}
-                  //height={270}
                   url={url}
                   playing={playing}
                   volume={volume}
@@ -222,16 +212,36 @@ LiteraryPlace = React.createClass({
                   onPause={() => this.setState({ playing: false })}
                   onBuffer={() => console.log('onBuffer')}
                   onEnded={() => this.setState({ playing: false })}
-                  onError={(e) => console.log('onError', e)}
+                  onError={(e) => console.log('onError', event)}
                   onProgress={this.onProgress}
                 />
               </div>
-              <i className={this.state.playTrack ? 'fa fa-pause-circle-o playCircle' : 'fa fa-play-circle-o playCircle'} onClick={this.togglePlay}></i>
+              <i className={playing ? 'fa fa-pause-circle-o playCircle' : 'fa fa-play-circle-o playCircle'}
+                 onClick={this.playPause}></i>
               <p>Lytt</p>
             </div>
           </div>
 
         <div className='textArea'>
+          {/*START - Denne koden er bare flytte under LYD-ikonet. Koden funker*/}
+          <p> Progress bar </p>
+            <progress max={1} value={played}>{played}</progress>
+          <p> Seek Bar</p>
+          <input
+                 type='range' min={0} max={1} step='any' className='rangeClass'
+                 value={played}
+                 onMouseDown={this.onSeekMouseDown} //For browser version
+                 onMouseUp={this.onSeekMouseUp} //For browser version
+                 onTouchStart={this.onSeekMouseDown} //For mobile version
+                 onTouchEnd={this.onSeekMouseUp} //For mobile version
+                 onChange={this.onSeekChange}
+               />
+
+             <p> Volum </p>
+             <input type='range' min={0} max={1} step='any' className='rangeClass' value={volume} onChange={this.setVolume} />
+
+
+             {/*SLUTT*/}
             Bayer lot Ingrid gli ut av armene og ned på sengen.
             Så bøyde han seg og dro frem kisten fra under sengen og fant pistolen sin.
             Han ladet den med ferskt krutt. Så stormet han ned trappen.
