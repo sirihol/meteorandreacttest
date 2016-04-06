@@ -74,6 +74,7 @@ LiteraryTrailCard = React.createClass({
 	}
 })
 
+
 LiteraryTrail = React.createClass({
   render:function(){
     return(
@@ -98,7 +99,7 @@ AppBarLiteraryTrail = React.createClass({
         <Link to={'literaryTrails'}><p id='chevron-left-icon'className='fa fa-chevron-left' /></Link>
         <Link to={'literaryTrails'}><p className='previouseSite'>Litterære løyper</p></Link>
         <div className='mapButton'>
-          <Link to={'literaryTrail/' + this.props.id + '/map'}><i id='map-icon' className='fa fa-map'></i></Link>
+          <Link to={'literaryTrail/map/' + this.props.id}><i id='map-icon' className='fa fa-map'></i></Link>
           <p>Kart</p>
         </div>
         <div className='title'>

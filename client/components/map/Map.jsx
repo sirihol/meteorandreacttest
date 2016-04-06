@@ -75,7 +75,9 @@ Map = React.createClass({
   componentDidMount(nextProps,nextState){
     // console.log("MobileMap.jsx is mounted - jeg kalles når render() er ferdig");
     if(!firstRun){
-      updateMap();
+      //updateMap();
+      let trailsdata = LitteraryTrailsGeoJSON.find().fetch();
+      updateMap(trailsdata);
     }
     firstRun = false;
   },
