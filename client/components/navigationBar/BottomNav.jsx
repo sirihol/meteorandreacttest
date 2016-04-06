@@ -71,7 +71,7 @@ NavigationButton = React.createClass({
 
   render(){
     return(
-      <Link className={'navigationButton ' + (this.state.selected ? 'btmnav-selected':'')} to={this.props.linkto}  onClick={this.emitEvent}>
+      <Link className={'navigationButton ' + (this.state.selected ? 'btmnav-selected':'')} to={"/"+this.props.linkto}  onClick={this.emitEvent}>
             <i className={this.props.iconName}></i>
             <div className='iconLabel'>{this.props.iconLabel}</div>
       </Link>

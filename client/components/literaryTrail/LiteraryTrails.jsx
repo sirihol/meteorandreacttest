@@ -47,22 +47,23 @@ LiteraryTrailCard = React.createClass({
   },
 
   render: function() {
+    let {title, author, numLiteraryPlaces,length, readBy, text, id} = this.props;
 		return (
       <div>
         <div className={this.state.expandDetails ? 'literaryTrailCardExpanded' : 'literaryTrailCard'} onClick={this.expandDetailsToggle}>
           <div className='trailDetails'>
-            <h1>{this.props.title}</h1>
-            <h3>{this.props.author}</h3>
+            <h1>{title}</h1>
+            <h3>{author}</h3>
             <p className={this.state.expandDetails ? 'fa fa-chevron-up' : 'fa fa-chevron-down'} onClick={this.expandDetailsToggle} />
           </div>
 
             <div className='moreTrailDetails'>
-              <p><strong>Antall litterære steder:</strong> {this.props.numLiteraryPlaces}</p>
-              <p><b>Lengde:</b> {this.props.length}</p>
-              <p><b>Lest av:</b> {this.props.readBy}</p>
+              <p><strong>Antall litterære steder:</strong> {numLiteraryPlaces}</p>
+              <p><b>Lengde:</b> {length}</p>
+              <p><b>Lest av:</b> {readBy}</p>
               <br/>
-              <p>{this.props.text}</p>
-              <Link to={'literaryTrail/' + this.props.id}>
+              <p>{text}</p>
+              <Link to={'/literaryTrail/' + id}>
                 <button className='flatbutton'>Start litterær løype</button>
               </Link>
             </div>
@@ -75,9 +76,10 @@ LiteraryTrailCard = React.createClass({
 
 LiteraryTrail = React.createClass({
   render:function(){
+    const {params} = this.props;
     return(
       <div className='literaryTrail'>
-        <AppBarLiteraryTrail />
+        <AppBarLiteraryTrail trailId={params.id} />
         <div className='literaryPlaces'>
           <LiteraryPlace placeTitle='Intro' placeAdress='Kongens gate 1'> </LiteraryPlace>
           <LiteraryPlace placeTitle='Drapet' placeAdress='Torvet'> </LiteraryPlace>
@@ -94,10 +96,10 @@ AppBarLiteraryTrail = React.createClass({
   render:function(){
     return(
       <div className='appBarLiteraryTrail'>
-        <Link to={'literaryTrails'}><p id='chevron-left-icon'className='fa fa-chevron-left' /></Link>
-        <Link to={'literaryTrails'}><p className='previouseSite'>Litterære løyper</p></Link>
+        <Link to={'/literaryTrails'}><p id='chevron-left-icon'className='fa fa-chevron-left' /></Link>
+        <Link to={'/literaryTrails'}><p className='previouseSite'>Litterære løyper</p></Link>
         <div className='mapButton'>
-          <Link to={'literaryTrail/map/' + this.props.id}><i id='map-icon' className='fa fa-map'></i></Link>
+          <Link to={'/literaryTrail/map/' + this.props.trailId}><i id='map-icon' className='fa fa-map'></i></Link>
           <p>Kart</p>
         </div>
         <div className='title'>
@@ -109,15 +111,18 @@ AppBarLiteraryTrail = React.createClass({
   }
 })
 
+
 LiteraryTrailMap = React.createClass({
   render:function(){
+    const {params} = this.props;
+
     return(
       <div>
         <div className='appBarLiteraryTrail mapTrail'>
-          <Link to={'literaryTrails'}><p id='chevron-left-icon'className='fa fa-chevron-left' /></Link>
-          <Link to={'literaryTrails'}><p className='previouseSite'>Litterære løyper</p></Link>
+          <Link to={'/literaryTrails'}><p id='chevron-left-icon'className='fa fa-chevron-left' /></Link>
+          <Link to={'/literaryTrails'}><p className='previouseSite'>Litterære løyper</p></Link>
           <div className='mapButton'>
-            <Link to={'literaryTrail/' + this.props.id}><i id='map-icon' className='fa fa-list'></i></Link>
+            <Link to={'/literaryTrail/' + params.id}><i id='map-icon' className='fa fa-list'></i></Link>
             <p>Liste</p>
           </div>
             <div className='title'>
