@@ -27,6 +27,12 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  overflow: hidden;
+
+  img{
+    width: 100%;
+    height: auto;
+  }
 }
 
 .userName{

@@ -13,6 +13,7 @@ Login = React.createClass({
 
 AccountsUIWrapper = React.createClass({
 	componentDidMount() {
+		console.log('skal vise login');
 		this.view = Blaze.render(Template.atForm, ReactDOM.findDOMNode(this.refs.app));
 	},
 
@@ -22,7 +23,8 @@ AccountsUIWrapper = React.createClass({
 
 	render: function() {
 		return (
-			<span ref="app"/>
+			<span ref="app">
+			</span>
 		);
 	}
 

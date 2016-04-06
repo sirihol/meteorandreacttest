@@ -16,7 +16,6 @@ TrophyComponent = React.createClass({
 		});
 	},
 
-
 	hideModal(e) {
 		//e.preventDefault();
     this.setState({
@@ -109,8 +108,10 @@ Modal = React.createClass({
 				<div className='modalActiveDarken' style = {modalStyle}>
 					<div className='modalContainer'>
 						<div className="closeModal" onClick={this.props.hideModal}><i className='fa fa-close closeModal'></i></div>
-						<h1>{this.props.title}</h1>
-						<h2>{this.props.desc}</h2>
+						<div className='modaltext'>
+							<h1>{this.props.title}</h1>
+							<h2>{this.props.desc}</h2>
+						</div>
 					</div>
 				</div>
 			</div>

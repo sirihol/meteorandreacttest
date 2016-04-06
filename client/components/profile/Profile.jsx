@@ -1,3 +1,5 @@
+const {Link} = ReactRouter;
+
 Profile = React.createClass({
 	mixins: [ReactMeteorData],
 
@@ -37,6 +39,7 @@ Profile = React.createClass({
 
 	handleLogout(){
 		AccountsTemplates.logout();
+
 	},
 
 	render() {
@@ -45,7 +48,6 @@ Profile = React.createClass({
 
 			<AppBar pageTitle="Min profil"/>
 			<div className="content-container">
-
 				<div className='logout-button' onClick={this.handleLogout}>
 						<i id='signout' className='fa fa-sign-out' ></i>
 						<p>Logg ut</p>
@@ -65,7 +67,7 @@ ProfileDetails = React.createClass({
 		return(
 			<div className='profileDetailsContainer'>
 				<div className='user'>
-					<img className='user' alt="profile-pic" src={this.props.profileimage} />
+					<img alt="profile-pic" src={this.props.profileimage} />
 				</div>
 				<div className='userName'>{this.props.username}</div>
 			</div>
