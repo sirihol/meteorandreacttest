@@ -71,15 +71,12 @@ LiteraryPlace = React.createClass({
   render:function(){
     const {url, playing, volume,played, loaded,} = this.state;
 
-    //console.log("STATES: url: ", url, "playing: ", playing, "volume: ", volume, "played: ", played, "loaded: ", loaded);
-
     return(
       <div className={this.state.showText ? 'literaryPlaceCardExpanded' : 'literaryPlaceCard'}>
         <div className='primarytext'>
           <h1>{this.props.placeTitle}</h1>
           <i className='fa fa-map-marker mapMarker'></i><p id='address'>{this.props.placeAdress}</p>
 
-          {/*START - Denne koden er bare flytte under LYD-ikonet. Koden funker*/}
           <div className='progress-bar'>
             <progress max={1} value={played}>{played}</progress>
 
@@ -93,7 +90,6 @@ LiteraryPlace = React.createClass({
                    onChange={this.onSeekChange}
                  />
           </div>
-          {/*SLUTT*/}
 
           <div className='rightButtons'>
             <div className='buttonAndText'>
@@ -102,6 +98,9 @@ LiteraryPlace = React.createClass({
             </div>
 
             <div className='buttonAndText'>
+              <i className={playing ? 'fa fa-pause-circle-o playCircle' : 'fa fa-play-circle-o playCircle'}
+                 onClick={this.playPause}></i>
+              <p>Lytt</p>
               <div className="none" style={{display: 'none'}}>
                 <ReactPlayer
                   ref='player'
@@ -117,9 +116,6 @@ LiteraryPlace = React.createClass({
                   onProgress={this.onProgress}
                 />
               </div>
-              <i className={playing ? 'fa fa-pause-circle-o playCircle' : 'fa fa-play-circle-o playCircle'}
-                 onClick={this.playPause}></i>
-              <p>Lytt</p>
             </div>
           </div>
 
