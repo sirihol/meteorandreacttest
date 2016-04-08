@@ -4,8 +4,6 @@ LiteraryPlace = React.createClass({
   getInitialState(){
     return{
         showText: false,
-        //States for the audioplayer
-        //url: 'https://raw.githubusercontent.com/scottschiller/SoundManager2/master/demo/_mp3/rain.mp3',
         url: '/resources/jawani.mp3',
         playing: false,
         volume: 0.7,
@@ -14,7 +12,6 @@ LiteraryPlace = React.createClass({
       }
   },
 
-  //Functions for audioplayer
   load(url) {
     this.setState({url, played: 0, loaded: 0 });
   },
@@ -43,6 +40,7 @@ LiteraryPlace = React.createClass({
       this.setState(state);
     }
   },
+
   onConfigSubmit() {
     let config;
     try {
@@ -53,6 +51,7 @@ LiteraryPlace = React.createClass({
     }
     this.setState(config);
   },
+
   renderLoadButton(url, label) {
     return (
       <button onClick={() => this.load(url)}>
@@ -74,8 +73,8 @@ LiteraryPlace = React.createClass({
     return(
       <div className={this.state.showText ? 'literaryPlaceCardExpanded' : 'literaryPlaceCard'}>
         <div className='primarytext'>
-          <h1>{this.props.placeTitle}</h1>
-          <i className='fa fa-map-marker mapMarker'></i><p id='address'>{this.props.placeAdress}</p>
+          <h1>{this.props.place.title}</h1>
+          <i className='fa fa-map-marker mapMarker'></i><p id='address'>{this.props.place.address}</p>
 
           <div className='progress-bar'>
             <progress max={1} value={played}>{played}</progress>
@@ -119,17 +118,8 @@ LiteraryPlace = React.createClass({
             </div>
           </div>
 
-        <div className='textArea'>
-            Bayer lot Ingrid gli ut av armene og ned på sengen.
-            Så bøyde han seg og dro frem kisten fra under sengen og fant pistolen sin.
-            Han ladet den med ferskt krutt. Så stormet han ned trappen.
-            Da han løp forbi kontoret, registrerte han at Torp hadde samlet mennene fra gaten der inne.
-            All fornuft tilsa at han burde ta med seg disse mennene i jakten,
-            men fornuft – fornuft var ikke på noen måte en del av ham lenger.
-            Tankene hans var som stumme skygger. Gud ville ha gått seg vill i Nils Bayers raseri,
-            men én ting var Bayer forvisset om: Gud fantes ikke. Han kom ned til Kongens gate.
-            Han reagerte med frykt på å gå her blant alle disse menneskene, ville gitt alt han hadde,
-            for ensomhet, men likevel gikk han mot torget der kirkegjengerne var flest.
+          <div className='textArea'>
+            {this.props.place.text}
           </div>
         </div>
     </div>
