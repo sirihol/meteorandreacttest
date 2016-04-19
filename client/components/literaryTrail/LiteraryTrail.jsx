@@ -1,13 +1,61 @@
 import Data from './trailData';
+import { Router, Route, Link } from 'react-router';
+
+// import { Trophies } from '../../../lib/collections.js'
 
 const {Link} = ReactRouter;
+let allDone = false;
 
 LiteraryTrail = React.createClass({
+	mixins: [ReactMeteorData],
+
+
+  // test() {
+  //     Trophies.update("uvA6hhF4Qgr9PHsXw", {
+  //       $set: { activeTrophy: true},
+  //     });
+  // },
+
+
+  getMeteorData(){
+    let handle =  Meteor.subscribe("trophies");
+    return {
+      // To use collection in HTML: trophies={this.data.trophies}
+      trophies: Trophies.find().fetch(),
+    }
+  },
+
+
   render(){
-
     const {params} = this.props;
+    let currentTrail = {};
 
-    var currentTrail = {};
+    const completedPlaces = (id, value) => {
+      currentTrail.places[id].completed = value;
+
+      let isFinished = 0;
+
+      currentTrail.places.forEach((item) => {
+        if(item.completed == true){
+          isFinished++;
+        }
+      })
+      console.log(isFinished);
+      if(isFinished >= currentTrail.places.length){
+        allDone = true;
+        Trophies.update("uvA6hhF4Qgr9PHsXw", {
+            $set: { activeTrophy: true},
+        });
+        console.log(Trophies.findOne({_id: "uvA6hhF4Qgr9PHsXw"}));
+        this.forceUpdate();
+      }else{
+        Trophies.update("uvA6hhF4Qgr9PHsXw", {
+            $set: { activeTrophy: false},
+        });
+        allDone = false;
+        this.forceUpdate();
+      }
+    };
 
     Data.forEach((element) => {
       if(element.id === params.id){
@@ -19,14 +67,24 @@ LiteraryTrail = React.createClass({
         return (
             <LiteraryPlace
               key={i}
+              id={i}
               place={item}
+              checkCompleted={(id, val) => completedPlaces(id, val)}
             />)
       }, this);
+
+      const finished = (
+        <div className='literaryPlacesCompleted'>
+          <p>Ferdig med { currentTrail.trailTitle }! Sjekk ut profilen din for nye trofeer</p>
+          <button className="btn-default fb-blue">Del på Facebook</button>
+        </div>
+      )
 
     return(
       <div className='literaryTrail'>
         <AppBarLiteraryTrail trail={ currentTrail } />
         <div className='literaryPlaces'>
+          { allDone && finished }
           { trailPlaces }
         </div>
     </div>

@@ -25,3 +25,32 @@ pre#debugpanel{
 .leaflet-control-container{
   display: none;
 }
+
+
+a#geolocate{
+  position: absolute;
+  top: 20%;
+  z-index: 1000;
+}
+
+.leaflet-popup-content-wrapper {
+  background:#4791B2;
+  color:#fff;
+  font-size:16px;
+  line-height:24px;
+}
+
+.leaflet-popup-content-wrapper a {
+  color:rgba(0,255,255,0.5);
+}
+
+.leaflet-popup-tip-container {
+  width:30px;
+  height:15px;
+}
+
+.leaflet-popup-tip {
+  border-left:15px solid transparent;
+  border-right:15px solid transparent;
+  border-top:15px solid #4791B2;
+}

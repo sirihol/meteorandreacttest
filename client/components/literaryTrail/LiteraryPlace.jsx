@@ -1,4 +1,6 @@
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player';
+import classNames from 'classnames';
+
 
 LiteraryPlace = React.createClass({
   getInitialState(){
@@ -67,34 +69,35 @@ LiteraryPlace = React.createClass({
       });
   },
 
+  getCardClasses(){
+    return classNames({
+          'literaryPlaceCardExpanded': this.state.showText
+          },{
+          'literaryPlaceCard': !this.state.showText
+          },{
+          'placeCompleted': !this.props.place.completed
+        });
+  },
+
+  toggleCompleted(){
+    this.props.place.completed = !this.props.place.completed;
+    this.toggleShowText();
+    this.forceUpdate()
+    this.props.checkCompleted(this.props.id, this.props.place.completed);
+  },
+
   render:function(){
-    const {url, playing, volume,played, loaded,} = this.state;
+    const {url, playing, volume,played, loaded, showText} = this.state;
+    const {title, address, text} = this.props.place;
 
     return(
-      <div className={this.state.showText ? 'literaryPlaceCardExpanded' : 'literaryPlaceCard'}>
+      <div className={ this.getCardClasses() }>
         <div className='primarytext'>
-          <h1>{this.props.place.title}</h1>
-          <i className='fa fa-map-marker mapMarker'></i><p id='address'>{this.props.place.address}</p>
-
-          <div className='progress-bar'>
-            <progress max={1} value={played}>{played}</progress>
-
-            <input
-                   type='range' min={0} max={1} step='any' className='rangeClass'
-                   value={played}
-                   onMouseDown={this.onSeekMouseDown} //For browser version
-                   onMouseUp={this.onSeekMouseUp} //For browser version
-                   onTouchStart={this.onSeekMouseDown} //For mobile version
-                   onTouchEnd={this.onSeekMouseUp} //For mobile version
-                   onChange={this.onSeekChange}
-                 />
-          </div>
+          <h1>{title}</h1>
+          <i className='fa fa-map-marker mapMarker'></i><p id='address'>{address}</p>
 
           <div className='rightButtons'>
-            <div className='buttonAndText'>
-              <i className={this.state.showText ? 'book fa fa-times' : 'book fa fa-book'} onClick={this.toggleShowText}></i>
-              <p> Les </p>
-            </div>
+            
 
             <div className='buttonAndText'>
               <i className={playing ? 'fa fa-pause-circle-o playCircle' : 'fa fa-play-circle-o playCircle'}
@@ -116,10 +119,29 @@ LiteraryPlace = React.createClass({
                 />
               </div>
             </div>
+            <div className='buttonAndText'>
+              <i className={showText ? 'book fa fa-chevron-up' : 'book fa fa-chevron-down'} onClick={this.toggleShowText}></i>
+              <p> Les </p>
+            </div>
           </div>
 
-          <div className='textArea'>
-            {this.props.place.text}
+          <div className='progress-bar'>
+            <progress max={1} value={played}>{played}</progress>
+
+            <input
+                   type='range' min={0} max={1} step='any' className='rangeClass'
+                   value={played}
+                   onMouseDown={this.onSeekMouseDown} //For browser version
+                   onMouseUp={this.onSeekMouseUp} //For browser version
+                   onTouchStart={this.onSeekMouseDown} //For mobile version
+                   onTouchEnd={this.onSeekMouseUp} //For mobile version
+                   onChange={this.onSeekChange}
+                 />
+          </div>
+
+          <div className='expandableArea'>
+            <p>{text}</p>
+            <button className="btn-default" onClick={() => this.toggleCompleted()}>Ferdig</button>
           </div>
         </div>
     </div>

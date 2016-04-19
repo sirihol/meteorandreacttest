@@ -58,29 +58,15 @@ const data = [{
 },{
   id:'frank',
   trailTitle:'Skummel historie',
-  author:'Forfatter #1, Forfatter #2',
-  length:'2km',
-  readBy:'Forfatter #2',
-  introText:'En intro til historien',
+  author:'En krimforfatter',
+  length:'0km',
+  readBy:'En krimforfatter',
+  introText:'En kort intro til historien',
   places: [{
-      title: 'Riikard',
+      title: 'Første stopp',
       address: 'Kongens gate 1',
       sound: '/resources/jawani.mp3',
-      text: 'Teksten som hører til',
-      completed: 'false'
-    },
-    {
-      title: 'Intro',
-      address: 'Kongens gate 1',
-      sound: '/resources/jawani.mp3',
-      text: 'Teksten som hører til',
-      completed: 'false'
-    },
-    {
-      title: 'Intro',
-      address: 'Kongens gate 1',
-      sound: '/resources/jawani.mp3',
-      text: 'Teksten som hører til',
+      text: 'Teksten som hører til Teksten som hører til Teksten som hører til Teksten som hører til Teksten som hører til',
       completed: 'false'
     }]
 }]

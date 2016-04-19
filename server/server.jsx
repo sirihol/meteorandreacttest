@@ -75,37 +75,6 @@ function addGeoJsonMarkers() {
         }
       },
       {
-        "type": "Feature",
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            10.394973456859589,
-            63.427314904894665
-          ]
-        },
-        "properties": {
-          "title": "Domen",
-          "marker-color": "#f2817f",
-          "marker-size": "large",
-          "marker-symbol": 4
-        }
-      },
-      {
-        "type": "Feature",
-        "geometry": {
-          "type": "Point",
-          "coordinates": [
-            10.393431186676024,
-            63.42650740121977
-          ]
-        },
-        "properties": {
-          "title": "Avslutning",
-          "marker-color": "#f2817f",
-          "marker-size": "large",
-          "marker-symbol": 5
-        }
-      },{
       "type": "Feature",
       "properties": {
         "stroke": "#e18884",
@@ -341,6 +310,22 @@ function addGeoJsonMarkers() {
             63.428129584652595
           ]
         ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.402336120605469,
+          63.42811518697868
+        ]
+      },
+      "properties": {
+        "title": "Tredje stopp",
+        "marker-color": "#47A2CC",
+        "marker-size": "large",
+        "marker-symbol": 3
       }
     }
     ]
