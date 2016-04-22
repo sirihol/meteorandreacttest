@@ -6,7 +6,7 @@ LiteraryPlace = React.createClass({
   getInitialState(){
     return{
         showText: false,
-        url: '/resources/jawani.mp3',
+        url: '',
         playing: false,
         volume: 0.7,
         played: 0,
@@ -87,8 +87,8 @@ LiteraryPlace = React.createClass({
   },
 
   render:function(){
-    const {url, playing, volume,played, loaded, showText} = this.state;
-    const {title, address, text} = this.props.place;
+    const {playing, volume,played, loaded, showText} = this.state;
+    const {sound,title, address, text} = this.props.place;
 
     return(
       <div className={ this.getCardClasses() }>
@@ -97,7 +97,7 @@ LiteraryPlace = React.createClass({
           <i className='fa fa-map-marker mapMarker'></i><p id='address'>{address}</p>
 
           <div className='rightButtons'>
-            
+
 
             <div className='buttonAndText'>
               <i className={playing ? 'fa fa-pause-circle-o playCircle' : 'fa fa-play-circle-o playCircle'}
@@ -107,7 +107,7 @@ LiteraryPlace = React.createClass({
                 <ReactPlayer
                   ref='player'
                   className='react-player'
-                  url={url}
+                  url={sound}
                   playing={playing}
                   volume={volume}
                   onPlay={() => this.setState({ playing: true })}

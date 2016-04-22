@@ -24,7 +24,7 @@ $top: 20%;
 }
 
 .literaryPlaceCard{
-  background-color: #4791B2;
+  background-color: #47A2CC;
   margin: 30px;
   border-radius: 2px;
   height: 20vh;
@@ -64,11 +64,12 @@ $top: 20%;
   .expandableArea{
     height: 0;
     visibility: hidden;
+    display: none;
   }
 }
 
 .literaryPlaceCardExpanded{
-  background-color: #4791B2;
+  background-color: #47A2CC;
   margin: 30px;
   border-radius: 2px;
   padding-bottom: 2vh;
@@ -106,12 +107,15 @@ $top: 20%;
   }
 
   .expandableArea{
-    margin-top: 2em;
-    padding: 16px;
+    padding: 10px;
     border-radius:2px;
     font-size: inherit;
     color: white;
 
+    p{
+      font-size: inherit;
+      color: black;
+    }
     > * {
       margin-top: .5em;
     }
@@ -129,7 +133,7 @@ $top: 20%;
 }
 
 .fb-blue{
-  background-color: #3B5998;
+  background-color: #3B5998 !important;
   color: white;
   font-weight: 100;
   padding: .3em;
@@ -141,7 +145,11 @@ literaryPlacesCompleted::after{
 
 .btn-default{
   width: 100%;
-
+  background-color: #97cae2;
+  height: 2em;
+  color: white;
+  border: none;
+  margin-top: 20px;
 }
 
 .placeCompleted{
@@ -154,7 +162,7 @@ literaryPlacesCompleted::after{
 
 .literaryTrailCard{
   background-color: #4791B2;
-  margin: 30px;
+  margin: 20px;
   border-radius:2px;
   height: 20vh;
   position: relative;
@@ -162,12 +170,13 @@ literaryPlacesCompleted::after{
   .moreTrailDetails{
     height: 0;
     visibility: hidden;
+    display: none;
   }
 }
 
 .trailDetails{
-  margin-left: 30px;
-  padding: 20px;
+  margin-left: 10px;
+  padding: 10px;
   color: white;
   h1{
     margin-top: 20px;
@@ -194,24 +203,24 @@ literaryPlacesCompleted::after{
 
 .literaryTrailCardExpanded{
   background-color: #4791B2;
-  margin: 30px;
+  margin: 20px;
   border-radius:2px;
   position: relative;
 
 
   .moreTrailDetails{
     background-color: #4791B2;
-    margin-left: 30px;
-    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
     border-radius: 2px;
     padding: 16px;
 
     .flatbutton{
       color: white;
-      margin: 1.8em auto;
-      background-color: lighten(#4791B2, 20%);
-      padding: 1em 2em;
-      border-radius: 6px;
+      margin: 1em auto;
+      background-color: #8dbdd2;
+      padding: 0.5em 2em;
+      border-radius: 3px;
       border: none;
     }
 
@@ -229,7 +238,7 @@ literaryPlacesCompleted::after{
 }
 
 .appBarLiteraryTrail{
-  background-color: #47A2CC;
+  background-color: #4791B2;
   position: fixed;
   height: $top;
   width: 100%;
@@ -250,13 +259,13 @@ literaryPlacesCompleted::after{
 
 .buttonAndText{
   width: 8vh;
+  margin-right: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   p{
     font-size: inherit;
-    margin-top: 10px;
     color: pink;
   }
 }
@@ -299,17 +308,13 @@ literaryPlacesCompleted::after{
 }
 
 #address{
-  height: inherit;
-  position: static;
   margin-left: 2.5vh;
   font-size: 2.5vh;
-  margin-top: -55px;
+  margin-top: -23px;
 }
 
 .progress-bar{
-  position: absolute;
   margin-top: 10%;
-  width: 80%;
   display: flex;
   flex-direction: column;
 }
@@ -392,4 +397,29 @@ input[type=range]::-webkit-slider-runnable-track {
     color: white;
     font-size: 4em;
   }
+}
+
+.trailLengthAndColor{
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.circle{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+  background-color:pink;
+  border-radius: 50%;
+  p{
+    font-size: 90%;
+  }
+}
+
+.line{
+  width: 1em;
+  height: 0.2em;
+  background-color: pink;
 }

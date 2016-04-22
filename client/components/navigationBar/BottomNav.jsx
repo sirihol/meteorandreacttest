@@ -1,4 +1,5 @@
-const {Link} = ReactRouter;
+import { Link } from 'react-router';
+
 
 BottomNav = React.createClass({
 

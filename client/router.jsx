@@ -1,16 +1,16 @@
-const {Router, Route, Redirect} = ReactRouter;
 
-const history = ReactRouter.history.useQueries(ReactRouter.history.createHistory)();
+import { Router, Route, browserHistory } from 'react-router';
 
-function requireAuth(nextState, replaceState) {
+
+function requireAuth(nextState, replace) {
   if (!Meteor.user())
-    replaceState({ nextPathname: nextState.location.pathname }, '/login')
+    replace('/login')
 }
 
 if (Meteor.isClient) {
 	Meteor.startup(function() {
 	  	let AppRoutes = (
-	    <Router history= {history}>
+      <Router history={browserHistory}>
 	      <Route component={App}>
 					<Router component={MapPage} path="/" />
 					<Route component={LiteraryTrail} path="literaryTrail/:id" onEnter={requireAuth}/>

@@ -7,7 +7,7 @@
   flex-wrap: wrap;
 }
 
-.trophyItem{
+.activeTrophyItem{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,41 +15,52 @@
   flex-basis: 30%;
   margin-top: 5%;
   margin-bottom: 10px;
-}
-
-.activeTrophyIcon{
-  width: 10vh;
-  height: 10vh;
-  border-radius: 50%;
-  background-color: pink;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+  .trophyIcon{
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    background-color: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .fa{
     color: white;
     font-size: 5vh;
   }
+  .trophyName{
+    font-size: 2.5vh ;
+    color: #000 !important;
+  }
 }
 
-.inactiveTrophyIcon{
-  width: 10vh;
-  height: 10vh;
-  border-radius: 50%;
-  background-color: #C8C6C6;
+.inactiveTrophyItem{
   display: flex;
   justify-content: center;
   align-items: center;
-
+  flex-direction: column;
+  flex-basis: 30%;
+  margin-top: 5%;
+  margin-bottom: 10px;
+  .trophyIcon{
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    background-color: #C8C6C6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .fa{
     color: white;
     font-size: 5vh;
   }
+  .trophyName{
+    font-size: 2.5vh !important;
+    color: #C8C6C6 !important;
+  }
 }
 
-.trophyName{
-  font-size: 2.5vh;
-}
 
 .contentWrapper{
   width: 100%;

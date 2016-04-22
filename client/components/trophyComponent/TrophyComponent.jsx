@@ -80,8 +80,8 @@ TrophyItem = React.createClass({
     } = this.props;
 
 		return(
-			<div className='trophyItem' onClick={this.props.showModal.bind(null, trophy.title, trophy.desc)} >
-				<div className={trophy.activeTrophy ? 'activeTrophyIcon' : 'inactiveTrophyIcon'}>
+			<div className={trophy.activeTrophy ? 'activeTrophyItem' : 'inactiveTrophyItem'} onClick={this.props.showModal.bind(null, trophy.title, trophy.desc)} >
+				<div className='trophyIcon'>
 					<i className={trophy.icon}></i>
 				</div>
 				<div className='trophyName'>{trophy.title}</div>

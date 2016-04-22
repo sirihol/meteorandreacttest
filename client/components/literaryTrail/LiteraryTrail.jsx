@@ -1,9 +1,7 @@
 import Data from './trailData';
-import { Router, Route, Link } from 'react-router';
-
 // import { Trophies } from '../../../lib/collections.js'
+import { Link } from 'react-router';
 
-const {Link} = ReactRouter;
 let allDone = false;
 
 LiteraryTrail = React.createClass({
@@ -43,13 +41,16 @@ LiteraryTrail = React.createClass({
       console.log(isFinished);
       if(isFinished >= currentTrail.places.length){
         allDone = true;
-        Trophies.update("uvA6hhF4Qgr9PHsXw", {
-            $set: { activeTrophy: true},
-        });
-        console.log(Trophies.findOne({_id: "uvA6hhF4Qgr9PHsXw"}));
+        Trophies.update(
+					"ZhbFshudLyW6nqW8a",
+					{$set:
+						{ activeTrophy: true},
+        	}
+				);
+        console.log(Trophies.findOne({title: "Etterforsker"}));
         this.forceUpdate();
       }else{
-        Trophies.update("uvA6hhF4Qgr9PHsXw", {
+        Trophies.update("ZhbFshudLyW6nqW8a", {
             $set: { activeTrophy: false},
         });
         allDone = false;
@@ -75,7 +76,14 @@ LiteraryTrail = React.createClass({
 
       const finished = (
         <div className='literaryPlacesCompleted'>
-          <p>Ferdig med { currentTrail.trailTitle }! Sjekk ut profilen din for nye trofeer</p>
+          <p>Ferdig med { currentTrail.trailTitle }!</p>
+					<strong>Nye trofeer: </strong>
+					<div className='activeTrophyItem'>
+						<div className='trophyIcon'>
+							<i className='fa fa-search'></i>
+						</div>
+						<div className='trophyName'>Etterforsker</div>
+					</div>
           <button className="btn-default fb-blue">Del på Facebook</button>
         </div>
       )

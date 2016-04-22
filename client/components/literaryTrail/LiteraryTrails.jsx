@@ -1,6 +1,6 @@
-import Data from './trailData'
+import Data from './trailData';
+import { Link } from 'react-router';
 
-const {Link} = ReactRouter;
 var trails = Data;
 
 LiteraryTrails = React.createClass({
@@ -33,18 +33,29 @@ LiteraryTrailCard = React.createClass({
   },
 
   render() {
-    let {trailTitle, author, numLiteraryPlaces,length, readBy, introText, id} = this.props.trail;
-		return (
+
+    let {trailTitle, author, length, readBy, introText, id, places,genre, trailColor} = this.props.trail;
+
+    let colorStyle = {
+      backgroundColor: trailColor
+    }
+
+  	return (
       <div>
         <div className={this.state.expandDetails ? 'literaryTrailCardExpanded' : 'literaryTrailCard'} onClick={this.expandDetailsToggle}>
           <div className='trailDetails'>
             <h1>{trailTitle}</h1>
             <h3>{author}</h3>
             <p className={this.state.expandDetails ? 'fa fa-chevron-up' : 'fa fa-chevron-down'} onClick={this.expandDetailsToggle} />
+            <div className='trailLengthAndColor'>
+              <div className='circle' style={colorStyle}><p>1</p></div>
+              <div className='line' style={colorStyle}></div>
+              <div className='circle' style={colorStyle}><p>{places.length}</p></div>
+            </div>
           </div>
 
             <div className='moreTrailDetails'>
-              <p><strong>Antall litterære steder:</strong> {numLiteraryPlaces}</p>
+              <p><b>Sjanger:</b> {genre}</p>
               <p><b>Lengde:</b> {length}</p>
               <p><b>Lest av:</b> {readBy}</p>
               <br/>
