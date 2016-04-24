@@ -8,23 +8,23 @@ input[type=range].rangeClass:focus {
 }
 input[type=range].rangeClass::-webkit-slider-runnable-track {
   width: 100%;
-  height: 14.8px;
+  height: 10px;
   cursor: pointer;
-  box-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.49), 0px 0px 0px rgba(13, 13, 13, 0.49);
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.49), 0px 0px 0px rgba(13, 13, 13, 0.49);
   background: #ffffff;
   border-radius: 3px;
-  border: 1px solid rgba(71, 145, 178, 0.6);
+  border: 0px solid rgba(71, 145, 178, 0.6) !important;
 }
 input[type=range].rangeClass::-webkit-slider-thumb {
   box-shadow: 0px 0px 4.3px rgba(255, 192, 203, 0.8), 0px 0px 0px rgba(255, 218, 224, 0.8);
   border: 0px solid #ffc0cb;
-  height: 28px;
-  width: 28px;
+  height: 20px;
+  width: 20px;
   border-radius: 100px;
   background: #ffc0cb;
   cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -7.6px;
+  margin-top: -4px;
 }
 input[type=range].rangeClass:focus::-webkit-slider-runnable-track {
   background: #ffffff;
