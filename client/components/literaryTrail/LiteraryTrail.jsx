@@ -1,11 +1,17 @@
-import Data from './trailData';
+import initialData from './trailData';
 // import { Trophies } from '../../../lib/collections.js'
 import { Link } from 'react-router';
 
 let allDone = false;
 
+
 LiteraryTrail = React.createClass({
 	mixins: [ReactMeteorData],
+
+	getInitialState(){
+		return{
+			data: initialData
+	}},
 
   getMeteorData(){
     let handle =  Meteor.subscribe("trophies");
@@ -18,19 +24,24 @@ LiteraryTrail = React.createClass({
     const {params} = this.props;
     let currentTrail = {};
 
+		const self = this;
+
 
 		// Sjekk ant. godkjente og evt gi trophy
     const completedPlaces = (id, value) => {
-			(`Oppdaterer listen over ferdige steder (${id} - ${value})`);
-      currentTrail.places[id].completed = value;
+			// (`Oppdaterer listen over ferdige steder (${id} - ${value})`);
+
+			// currentTrail is now just a referance to the element in this.state.data
+      currentTrail.places[id].initiallyCompleted = value;
 
       let isFinished = 0;
 
       currentTrail.places.forEach((item) => {
-        if(item.completed == true){
+        if(item.initiallyCompleted == true){
           isFinished++;
         }
       })
+
       if(isFinished >= currentTrail.places.length){
         allDone = true;
         Trophies.update(
@@ -50,7 +61,7 @@ LiteraryTrail = React.createClass({
     };
 
 		// Setter current trail
-    Data.forEach((element) => {
+    this.state.data.forEach((element) => {
       if(element.id === params.id){
         currentTrail = element;
       }
