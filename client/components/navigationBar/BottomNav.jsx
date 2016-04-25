@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 BottomNav = React.createClass({
 
     clicked(id, name){
-      console.log(`[BottomNav]: Navigating to ${id} (${name})`);
+      // console.log(`[BottomNav]: Navigating to ${id} (${name})`);
     },
 
   render(){
@@ -64,7 +64,6 @@ NavigationButton = React.createClass({
     },
 
     testClick(){
-      console.log("setting state to true");
       this.setState({
         selected: true
       })

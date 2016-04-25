@@ -141,11 +141,11 @@ LiteraryPlace = React.createClass({
                    onChange={this.onSeekChange}
                  />
           </div>
+        </div>
 
-          <div className='expandableArea'>
-            <p>{text}</p>
-            <button className="btn-default" onClick={() => toggleCompleted()}>Ferdig</button>
-          </div>
+        <div className='expandableArea'>
+          <p>{text}</p>
+          <button className="btn-default" onClick={() => toggleCompleted()}>Ferdig</button>
         </div>
     </div>
     );
