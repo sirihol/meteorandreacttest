@@ -7,14 +7,6 @@ let allDone = false;
 LiteraryTrail = React.createClass({
 	mixins: [ReactMeteorData],
 
-
-  // test() {
-  //     Trophies.update("uvA6hhF4Qgr9PHsXw", {
-  //       $set: { activeTrophy: true},
-  //     });
-  // },
-
-
   getMeteorData(){
     let handle =  Meteor.subscribe("trophies");
     return {
@@ -22,13 +14,14 @@ LiteraryTrail = React.createClass({
       trophies: Trophies.find().fetch(),
     }
   },
-
-
   render(){
     const {params} = this.props;
     let currentTrail = {};
 
+
+		// Sjekk ant. godkjente og evt gi trophy
     const completedPlaces = (id, value) => {
+			(`Oppdaterer listen over ferdige steder (${id} - ${value})`);
       currentTrail.places[id].completed = value;
 
       let isFinished = 0;
@@ -38,7 +31,6 @@ LiteraryTrail = React.createClass({
           isFinished++;
         }
       })
-      console.log(isFinished);
       if(isFinished >= currentTrail.places.length){
         allDone = true;
         Trophies.update(
@@ -47,7 +39,6 @@ LiteraryTrail = React.createClass({
 						{ activeTrophy: true},
         	}
 				);
-        console.log(Trophies.findOne({title: "Etterforsker"}));
         this.forceUpdate();
       }else{
         Trophies.update("ZhbFshudLyW6nqW8a", {
@@ -58,12 +49,14 @@ LiteraryTrail = React.createClass({
       }
     };
 
+		// Setter current trail
     Data.forEach((element) => {
       if(element.id === params.id){
         currentTrail = element;
       }
     });
 
+		// Lag html elementer for hvert sted (trail place)
     const trailPlaces = currentTrail.places.map(function(item, i){
         return (
             <LiteraryPlace
@@ -74,6 +67,7 @@ LiteraryTrail = React.createClass({
             />)
       }, this);
 
+			// Lag html-element for sluttskjermen
       const finished = (
         <div className='literaryPlacesCompleted'>
           <p>Ferdig med { currentTrail.trailTitle }!</p>
@@ -99,6 +93,7 @@ LiteraryTrail = React.createClass({
     );
   }
 })
+
 
 AppBarLiteraryTrail = React.createClass({
   render(){

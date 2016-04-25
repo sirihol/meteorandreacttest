@@ -10,7 +10,8 @@ LiteraryPlace = React.createClass({
         playing: false,
         volume: 0.7,
         played: 0,
-        loaded: 0
+        loaded: 0,
+        completed: this.props.place.initiallyCompleted
       }
   },
 
@@ -61,7 +62,8 @@ LiteraryPlace = React.createClass({
       </button>
     )
   },
-  //End functions for audioplayer
+
+  //<========== End functions for audioplayer
 
   toggleShowText(){
       this.setState({
@@ -69,29 +71,30 @@ LiteraryPlace = React.createClass({
       });
   },
 
-  getCardClasses(){
-    return classNames({
-          'literaryPlaceCardExpanded': this.state.showText
-          },{
-          'literaryPlaceCard': !this.state.showText
-          },{
-          'placeCompleted': !this.props.place.completed
-        });
-  },
-
-  toggleCompleted(){
-    this.props.place.completed = !this.props.place.completed;
-    this.toggleShowText();
-    this.forceUpdate()
-    this.props.checkCompleted(this.props.id, this.props.place.completed);
-  },
-
   render:function(){
     const {playing, volume,played, loaded, showText} = this.state;
     const {sound,title, address, text} = this.props.place;
+    const self = this;
+
+    const getCardClasses = () => {
+      return classNames({
+            'literaryPlaceCardExpanded': self.state.showText
+            },{
+            'literaryPlaceCard': !self.state.showText
+            },{
+            'placeCompleted': self.state.completed
+          });
+    };
+
+    const toggleCompleted = () => {
+      self.setState({completed: !self.state.completed}, () => {
+        self.props.checkCompleted(this.props.id, self.state.completed);
+      });
+      self.toggleShowText();
+    };
 
     return(
-      <div className={ this.getCardClasses() }>
+      <div className={ getCardClasses() }>
         <div className='primarytext'>
           <h1>{title}</h1>
           <i className='fa fa-map-marker mapMarker'></i><p id='address'>{address}</p>
@@ -141,7 +144,7 @@ LiteraryPlace = React.createClass({
 
           <div className='expandableArea'>
             <p>{text}</p>
-            <button className="btn-default" onClick={() => this.toggleCompleted()}>Ferdig</button>
+            <button className="btn-default" onClick={() => toggleCompleted()}>Ferdig</button>
           </div>
         </div>
     </div>
