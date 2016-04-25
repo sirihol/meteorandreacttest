@@ -133,7 +133,7 @@ LiteraryTrailMap = React.createClass({
     const {params} = this.props;
     var currentTrail = {};
 
-    Data.forEach((element) => {
+    initialData.forEach((element) => {
       if(element.id === params.id){
         currentTrail = element;
       }
