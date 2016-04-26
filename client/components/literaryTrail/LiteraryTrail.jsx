@@ -82,7 +82,7 @@ LiteraryTrail = React.createClass({
 						<div className='trophyIcon'>
 							<i className='fa fa-search'></i>
 						</div>
-						<div className='trophyName'>Etterforsker</div>
+						<div className='trophyName'>Detektiv</div>
 					</div>
           <button className="btn-default fb-blue">Del på Facebook</button>
         </div>
