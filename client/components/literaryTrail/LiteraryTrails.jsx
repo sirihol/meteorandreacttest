@@ -40,6 +40,10 @@ LiteraryTrailCard = React.createClass({
       backgroundColor: trailColor
     }
 
+    let lineStyle = {
+      borderTopColor: trailColor
+    }
+
   	return (
       <div>
         <div className={this.state.expandDetails ? 'literaryTrailCardExpanded' : 'literaryTrailCard'} onClick={this.expandDetailsToggle}>
@@ -49,7 +53,7 @@ LiteraryTrailCard = React.createClass({
             <p className={this.state.expandDetails ? 'fa fa-chevron-up' : 'fa fa-chevron-down'} onClick={this.expandDetailsToggle} />
             <div className='trailLengthAndColor'>
               <div className='circle' style={colorStyle}><p>1</p></div>
-              <div className='line' style={colorStyle}></div>
+              <div className='line' style={lineStyle}></div>
               <div className='circle' style={colorStyle}><p>{places.length}</p></div>
             </div>
           </div>

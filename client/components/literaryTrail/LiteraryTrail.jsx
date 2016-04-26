@@ -113,10 +113,12 @@ AppBarLiteraryTrail = React.createClass({
       <div className='appBarLiteraryTrail'>
         <Link to={'/literaryTrails'}><p id='chevron-left-icon'className='fa fa-chevron-left' /></Link>
         <Link to={'/literaryTrails'}><p className='previouseSite'>Litterære løyper</p></Link>
-        <div className='mapButton'>
+
+				<div className='mapButton'>
           <Link to={'/literaryTrail/map/' + this.props.trail.id}><i id='map-icon' className='fa fa-map'></i></Link>
           <p>Kart</p>
         </div>
+
         <div className='title'>
           <h2>{ this.props.trail.trailTitle }</h2>
           <i>{ this.props.trail.author }</i>
@@ -154,36 +156,6 @@ LiteraryTrailMap = React.createClass({
             </div>
         </div>
         <Map className='trailMap'/>
-      </div>
-    );
-  }
-})
-
-
-
-
-SocialComponent = React.createClass({
-  getInitialState(){
-    return{
-        showSocial: false
-      }
-  },
-
-  render(){
-    return(
-      <div className='social'>
-        <div className={this.state.showSocial ? 'social-buttons' : 'hidden-social-buttons'}>
-
-          <div className='facebook-share'>
-            <h2>Del på facebook</h2>
-            <i className='fa fa-facebook-square'></i>
-          </div>
-
-          <div className='feedback'>
-            <h2>La forfatteren vite hva du syns</h2>
-            <textarea></textarea>
-          </div>
-        </div>
       </div>
     );
   }

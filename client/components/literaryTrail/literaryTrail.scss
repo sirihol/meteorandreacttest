@@ -11,8 +11,6 @@ $top: 20%;
   margin: 20px;
   border-radius:2px;
   position: relative;
-  border: solid 1px;
-  border-color: darken(#4791B2, 20);
   box-shadow: 0px 2px 10px 0px darken(#4791B2, 20);
 
   .moreTrailDetails{
@@ -54,8 +52,6 @@ $top: 20%;
   margin: 20px;
   border-radius:2px;
   position: relative;
-  border: solid 1px;
-  border-color: darken(#4791B2, 20);
   box-shadow: 0px 2px 10px 0px darken(#4791B2, 20);
 
   .moreTrailDetails{
@@ -110,8 +106,8 @@ $top: 20%;
 }
 
 .line{
-  width: 1em;
-  border-top: dotted 3px;
+  width: 1.4em;
+  border-top: dotted 4px;
 }
 
 .literaryPlaces{
@@ -131,14 +127,14 @@ $top: 20%;
     text-align: center;
 }
 
-.literaryPlaceCard{
+.literaryPlaceCard {
   background-color: #47A2CC;
   margin: 30px;
   border-radius: 2px;
   height: 20vh;
+  box-shadow: 0px 2px 10px 0px darken(#47A2CC, 20);
 
   .primarytext{
-    // margin-left: 2vh;
     padding: .4em 1em;
 
     .mapMarker{
@@ -180,10 +176,9 @@ $top: 20%;
   background-color: #47A2CC;
   margin: 30px;
   border-radius: 2px;
-  padding-bottom: 2vh;
+  box-shadow: 0px 2px 10px 0px darken(#47A2CC, 20);
 
   .primarytext{
-    // margin-left: 2vh;
     padding: .4em 1em;
 
     .mapMarker{
@@ -215,15 +210,19 @@ $top: 20%;
   }
 
   .expandableArea{
-    padding: 10px;
+    padding: 20px;
     border-radius:2px;
     font-size: inherit;
     color: white;
+    background-color: lighten(#47A2CC,10);
+    border-top: solid 1px darken(#47A2CC,20);
 
     p{
-      font-size: inherit;
       color: black;
+      font-size: 90%;
+      text-align: justify;
     }
+
     > * {
       margin-top: .5em;
     }
@@ -279,8 +278,11 @@ literaryPlacesCompleted::after{
 
   .title{
     top: 40%;
-    font-size: inherit;
+    font-size: 110%;
     position: relative;
+  }
+  i{
+    font-size: 90%;
   }
 }
 
