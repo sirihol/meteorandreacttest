@@ -293,9 +293,9 @@ Meteor.methods({
       },
 
       {
-          title: 'Etterforsker',
+          title: 'Detektiv',
           icon: 'fa fa-search',
-          desc: 'Gjennomført en krimløype.',
+          desc: 'Gjennomført en løype med sjanger krim.',
           activeTrophy: false,
           owner: newUser
       },
