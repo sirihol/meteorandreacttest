@@ -1,0 +1,60 @@
+.profile{
+  display: flex;
+  position: absolute;
+  height: 30vh;
+  top: 100px;
+  width: 100%;
+  justify-content: center;
+}
+
+.profileDetailsContainer{
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.user{
+  display: inline-block;
+  width: 15vh;
+  height: 15vh;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+
+  img{
+    width: 100%;
+    height: auto;
+  }
+}
+
+.userName{
+  font-size: 3vh;
+}
+
+.logout-button{
+  z-index: 1000;
+  position: fixed;
+  margin-top: -20%;
+  z-index: 100;
+  margin-left: 80%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .fa-sign-out{
+    font-size: 120%;
+    color: white;
+  }
+  p{
+    font-size: 80%;
+    color: white;
+  }
+}

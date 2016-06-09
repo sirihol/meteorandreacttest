@@ -1,0 +1,126 @@
+.trophyContainer{
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: baseline;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.activeTrophyItem{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-basis: 30%;
+  margin-top: 5%;
+  margin-bottom: 10px;
+  .trophyIcon{
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    background-color: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .fa{
+    color: white;
+    font-size: 5vh;
+  }
+  .trophyName{
+    font-size: 2.5vh ;
+    color: #000 !important;
+  }
+}
+
+.inactiveTrophyItem{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-basis: 30%;
+  margin-top: 5%;
+  margin-bottom: 10px;
+  .trophyIcon{
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    background-color: #C8C6C6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .fa{
+    color: white;
+    font-size: 5vh;
+  }
+  .trophyName{
+    font-size: 2.5vh !important;
+    color: #C8C6C6 !important;
+  }
+}
+
+
+.contentWrapper{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.modalActiveDarken{
+  background-color: rgba(25, 52, 64, 0.9);
+  width: 100%;
+  height: 120%;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top:0;
+  z-index: 1;
+}
+
+.modalContainer{
+  pointer-events: all;
+  width: 75%;
+  min-height: 35%;
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 5px 8px 10px 0px #565656;
+  z-index: 1;
+  .closeModal{
+    position: absolute;
+    color: #4791B2;
+    font-size: 4vh;
+    right: 17%;
+    margin-top: 5%;
+    line-height: normal;
+  }
+  .modaltext{
+    h1{
+      color: lightcoral;
+      margin-top: 7%;
+      text-align: center;
+      font-size: 110%;
+    }
+    h2{
+      color: #4791B2;
+      margin-top: 10%;
+      text-align: center;
+      font-size: inherit;
+    }
+  }
+}
+
+.modalbutton{
+      height: 10%;
+    background-color: pink;
+    color: white;
+    position: absolute;
+    width: 75%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-top: 28%;
+}
